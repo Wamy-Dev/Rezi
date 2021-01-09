@@ -24,7 +24,7 @@ If you so choose this bot has 4 options for piracy. You may either choose to get
 
 
 
-
+## If you want this bot in your server here is the link: [Server Invite](https://discord.com/api/oauth2/authorize?client_id=796909768940978186&permissions=519232&scope=bot)
 
 
 
