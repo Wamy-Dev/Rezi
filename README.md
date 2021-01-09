@@ -30,7 +30,7 @@ If you so choose this bot has 4 options for piracy. You may either choose to get
 
 
 ##### This bot was made by me, Wamy.
-##### If you want to contact me: [Reddit](https://www.reddit.com/user/Official-Wamy), Discord: Wamy#0001 or by email WamyPlayz@gmail.com
+##### If you want to contact me: [Reddit](https://www.reddit.com/user/Official-Wamy), Discord: Wamy#0001 or my personal discord server: [Server](https://discord.gg/47SnjxgBFb)
 ##### Track on Trello: [This Trello](https://trello.com/b/44fXKPFI/discord-scraper-bot)
 ##### If you want to donate to show your thanks: [PayPal](paypal.me/DavidNovencido)
 ##### My website: [homeonacloud.com](homeonacloud.com)
