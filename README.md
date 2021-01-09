@@ -1,7 +1,7 @@
 # DiscordRomScraperBot
 
 
-***This is still in development***
+***This is still in development and may or may not work depending on what I am doing with it at the time.***
 
 
 Hello everyone! This is a public repo and source for the Rom Scraper Discord Bot, kindof a stupid name, but gets the job done. In this Readme you will find all the commands needed to use this bot, contact info, donation info and more. 
