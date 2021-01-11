@@ -1,1 +1,14 @@
-G:/Steam Games/Client/Steam/steamapps/common/Discord Bot Builder/project/package.json
+{
+    "name": "discord-bot-builder-bot",
+    "author": "Discord Bot Builder",
+    "description": "Discord bot created with Discord Bot Builder.",
+    "version": "0.3.2",
+    "main": "bot.js",
+    "scripts": {
+        "start": "node bot.js"
+    },
+    "dependencies": {
+        "discord.js": "^12.5.1",
+        "fstorm": "^0.1.3"
+    }
+}

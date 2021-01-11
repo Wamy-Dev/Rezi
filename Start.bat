@@ -1,1 +1,3 @@
-G:/Steam Games/Client/Steam/steamapps/common/Discord Bot Builder/project/Start.bat
+@echo off
+node bot.js
+pause

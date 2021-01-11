@@ -1,0 +1,18 @@
+{
+    "dbb": {
+        "prefixes": {
+            "main": "!",
+            "servers": {}
+        },
+        "owners": []
+    },
+    "discord": {
+        "servers": {},
+        "members": {},
+        "users": {}
+    },
+    "blocks": {},
+    "custom": {
+        "Game": "What game would you like to grab?"
+    }
+}

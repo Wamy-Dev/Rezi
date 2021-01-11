@@ -1,0 +1,2644 @@
+[
+    {
+        "info": {
+            "title": "My New Workspace",
+            "description": "",
+            "thumbnail": ""
+        },
+        "blocks": [
+            {
+                "name": "bot_initialization_event",
+                "info": {
+                    "x": 130,
+                    "y": 95,
+                    "z": 2,
+                    "color": "#5a5a5a",
+                    "height": 82,
+                    "width": 242
+                },
+                "outputs": {
+                    "action": [
+                        "b9ezheQufO"
+                    ]
+                },
+                "inputs": {},
+                "options": {}
+            },
+            {
+                "name": "set_bot_status",
+                "info": {
+                    "x": 75,
+                    "y": 77,
+                    "z": 4,
+                    "color": "#5a5a5a",
+                    "height": 105,
+                    "width": 365
+                },
+                "inputs": {
+                    "action": "b9ezheQufO"
+                },
+                "options": {
+                    "status_type": "online"
+                },
+                "outputs": {
+                    "action": [
+                        "ZB6ODsc4ZK"
+                    ]
+                }
+            },
+            {
+                "name": "set_bot_activity",
+                "info": {
+                    "x": 57,
+                    "y": 74,
+                    "z": 5,
+                    "color": "#5a5a5a",
+                    "height": 165,
+                    "width": 411
+                },
+                "inputs": {
+                    "action": "ZB6ODsc4ZK",
+                    "activity_name": "LkIpHkIeTN",
+                    "activity_url": "O0TWI0DACz"
+                },
+                "options": {
+                    "activity_type": "watching"
+                },
+                "outputs": {
+                    "action": []
+                }
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 107,
+                    "y": 99,
+                    "z": 6,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "!help"
+                },
+                "outputs": {
+                    "text": [
+                        "LkIpHkIeTN"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "create_embed_message",
+                "info": {
+                    "x": 2050,
+                    "y": 117,
+                    "z": 7,
+                    "color": "#5a5a5a",
+                    "height": 517,
+                    "width": 340
+                },
+                "inputs": {
+                    "action": "f73FABJ68P",
+                    "color": "6tiOC4yIxP",
+                    "thumbnail": "kkCP2BODTy",
+                    "author_icon": "kOKj3k4JVM",
+                    "author_name": "4ybsoZ7FBh",
+                    "author_url": "sQxFc6ojIo",
+                    "title": "5vpetlNgtB",
+                    "url": "jfBEGMS8ko",
+                    "description": "AGGMtJD7e5",
+                    "image": "E86Exi1WPY",
+                    "footer_icon": "kLOIYgb3G7",
+                    "footer_text": "lSFy1F5ZvH",
+                    "timestamp": "SSbQjFXS9Q"
+                },
+                "outputs": {
+                    "action": [
+                        "MTXtrfvUIi"
+                    ],
+                    "message_embed": [
+                        "sKRX4wzlym"
+                    ]
+                },
+                "options": {}
+            },
+            {
+                "name": "boolean",
+                "info": {
+                    "x": 1703,
+                    "y": 928,
+                    "z": 8,
+                    "color": "#5a5a5a",
+                    "height": 105,
+                    "width": 268
+                },
+                "options": {
+                    "boolean_type": "true"
+                },
+                "outputs": {
+                    "boolean": [
+                        "SSbQjFXS9Q"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "command_event",
+                "info": {
+                    "x": 1251,
+                    "y": 101,
+                    "z": 9,
+                    "color": "#5a5a5a",
+                    "height": 267,
+                    "width": 759
+                },
+                "inputs": {
+                    "command_name": "2CzCSQKe9Z",
+                    "custom_prefix": "wBWVTHSkaB",
+                    "command_slowmode": "BoKlb2eHPj"
+                },
+                "options": {
+                    "command_restriction": "none",
+                    "required_member_permission": "none",
+                    "case_sensitive": "no",
+                    "command_slowmode_restriction": "none"
+                },
+                "outputs": {
+                    "action1": [
+                        "o91bjMjczw"
+                    ],
+                    "action2": [],
+                    "message": [
+                        "M0vX5IakBI"
+                    ],
+                    "channel": [
+                        "U4U0RJYcc8"
+                    ],
+                    "user": [],
+                    "error_message": []
+                }
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 917,
+                    "y": 112,
+                    "z": 11,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "help "
+                },
+                "outputs": {
+                    "text": [
+                        "2CzCSQKe9Z"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "get_message_info",
+                "info": {
+                    "x": 1348,
+                    "y": 376,
+                    "z": 13,
+                    "color": "#5a5a5a",
+                    "height": 113,
+                    "width": 653
+                },
+                "inputs": {
+                    "action": "o91bjMjczw",
+                    "message": "M0vX5IakBI"
+                },
+                "options": {
+                    "message_info": "1"
+                },
+                "outputs": {
+                    "action": [
+                        "f73FABJ68P"
+                    ],
+                    "result": []
+                }
+            },
+            {
+                "name": "send_message",
+                "info": {
+                    "x": 2107,
+                    "y": 708,
+                    "z": 14,
+                    "color": "#5a5a5a",
+                    "height": 237,
+                    "width": 280
+                },
+                "inputs": {
+                    "action": "MTXtrfvUIi",
+                    "channel": "U4U0RJYcc8",
+                    "text": "RAh3Utfn3b",
+                    "embed": "sKRX4wzlym",
+                    "attachment": "Ej4mfHf51A",
+                    "split_message": "Nc7yDwyuoC"
+                },
+                "outputs": {
+                    "action": [],
+                    "message": []
+                },
+                "options": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 1647,
+                    "y": 502,
+                    "z": 15,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "Your friendly help section."
+                },
+                "outputs": {
+                    "text": [
+                        "4ybsoZ7FBh"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 1317,
+                    "y": 507,
+                    "z": 16,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "Prefix is ***!***"
+                },
+                "outputs": {
+                    "text": [
+                        "5vpetlNgtB"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 1678,
+                    "y": 785,
+                    "z": 17,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "this bot was made by Wamy#0001"
+                },
+                "outputs": {
+                    "text": [
+                        "lSFy1F5ZvH"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 1045,
+                    "y": 670,
+                    "z": 18,
+                    "color": "#5a5a5a",
+                    "height": 310,
+                    "width": 557
+                },
+                "options": {
+                    "text": "**Bot Commands**\n```diff\n- !ping to test the bots latency```\n**Grabbing**\n```glsl\n!grab to start the grabbing process\n!grabcheck to make sure the repos are all up```\n**Piracy**\n```fix\n!piracy1 to enable raw links in base64, this is default\n!piracy2 to enable raw links\n!piracy3 to enable official store links\n!piracy4 to enable official store links in base 64```\n"
+                },
+                "outputs": {
+                    "text": [
+                        "AGGMtJD7e5"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 1669,
+                    "y": 654,
+                    "z": 19,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "#000000"
+                },
+                "outputs": {
+                    "text": [
+                        "6tiOC4yIxP"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "command_event",
+                "info": {
+                    "x": 4728,
+                    "y": 84,
+                    "z": 21,
+                    "color": "#5a5a5a",
+                    "height": 267,
+                    "width": 759
+                },
+                "inputs": {
+                    "command_name": "6pkag3n24N",
+                    "custom_prefix": "pOVCMXS4Io",
+                    "command_slowmode": "56C9W06B1J"
+                },
+                "options": {
+                    "command_restriction": "none",
+                    "required_member_permission": "send_messages",
+                    "case_sensitive": "no",
+                    "command_slowmode_restriction": "none"
+                },
+                "outputs": {
+                    "action1": [
+                        "Qx4SDQb8RN"
+                    ],
+                    "action2": [
+                        "3x7CtMD8PF"
+                    ],
+                    "message": [],
+                    "channel": [
+                        "Uq7W8pujyi",
+                        "yYC08j3yoA",
+                        "6h2CHk0HIS"
+                    ],
+                    "user": [],
+                    "error_message": []
+                }
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 4397,
+                    "y": 92,
+                    "z": 22,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "grabps4 "
+                },
+                "outputs": {
+                    "text": [
+                        "6pkag3n24N"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "check_permissions",
+                "info": {
+                    "x": 1154,
+                    "y": 1340,
+                    "z": 26,
+                    "color": "#5a5a5a",
+                    "height": 113,
+                    "width": 739
+                },
+                "inputs": {
+                    "action": "5ksCFtlZBc",
+                    "permissions": "91SqEMCVOj"
+                },
+                "options": {
+                    "permission": "ban_members"
+                },
+                "outputs": {
+                    "action1": [
+                        "0HQBuryTjQ"
+                    ],
+                    "action2": [
+                        "Ff8yQmKHhb"
+                    ]
+                }
+            },
+            {
+                "name": "command_event",
+                "info": {
+                    "x": 372,
+                    "y": 1336,
+                    "z": 27,
+                    "color": "#5a5a5a",
+                    "height": 267,
+                    "width": 759
+                },
+                "inputs": {
+                    "command_name": "zf6pRVemBl",
+                    "custom_prefix": "g3Hp9OyogC",
+                    "command_slowmode": "8rJztUJnJ5"
+                },
+                "options": {
+                    "command_restriction": "none",
+                    "required_member_permission": "none",
+                    "case_sensitive": "no",
+                    "command_slowmode_restriction": "none"
+                },
+                "outputs": {
+                    "action1": [
+                        "5ksCFtlZBc"
+                    ],
+                    "action2": [],
+                    "message": [],
+                    "channel": [
+                        "v4uUwYZpY5",
+                        "13Zzswym0h"
+                    ],
+                    "user": [
+                        "91SqEMCVOj"
+                    ],
+                    "error_message": []
+                }
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 36,
+                    "y": 1333,
+                    "z": 28,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "piracy1 "
+                },
+                "outputs": {
+                    "text": [
+                        "zf6pRVemBl"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "send_message",
+                "info": {
+                    "x": 1534,
+                    "y": 1476,
+                    "z": 30,
+                    "color": "#5a5a5a",
+                    "height": 237,
+                    "width": 280
+                },
+                "inputs": {
+                    "action": "Ff8yQmKHhb",
+                    "channel": "v4uUwYZpY5",
+                    "text": "pCkhxuWKB5",
+                    "embed": "ot5co6dkUN",
+                    "attachment": "m6XMcbHG6c",
+                    "split_message": "h4TjnLTkdv"
+                },
+                "outputs": {
+                    "action": [],
+                    "message": []
+                },
+                "options": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 5531,
+                    "y": 196,
+                    "z": 37,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "What game would you like to grab?"
+                },
+                "outputs": {
+                    "text": [
+                        "q8445aLlbo"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "send_message",
+                "info": {
+                    "x": 5873,
+                    "y": 93,
+                    "z": 38,
+                    "color": "#5a5a5a",
+                    "height": 237,
+                    "width": 280
+                },
+                "inputs": {
+                    "action": "Qx4SDQb8RN",
+                    "channel": "Uq7W8pujyi",
+                    "text": "q8445aLlbo",
+                    "embed": "N6VISUDPLA",
+                    "attachment": "UQfgczduAr",
+                    "split_message": "gYs3xA18jc"
+                },
+                "outputs": {
+                    "action": [
+                        "VQlqiwpcAZ"
+                    ],
+                    "message": []
+                },
+                "options": {}
+            },
+            {
+                "name": "await_messages",
+                "info": {
+                    "x": 6218,
+                    "y": 76,
+                    "z": 43,
+                    "color": "#5a5a5a",
+                    "height": 269,
+                    "width": 340
+                },
+                "inputs": {
+                    "action": "VQlqiwpcAZ",
+                    "channel": "yYC08j3yoA",
+                    "javascript_filter_code": "bCI0XFaHWo",
+                    "max_messages": "qy13YyIA85",
+                    "max_time": "vIbkIeTJH0"
+                },
+                "outputs": {
+                    "action1": [
+                        "TCXet9zCIz"
+                    ],
+                    "action2": [],
+                    "messages": [
+                        "GHothyZiKP"
+                    ]
+                },
+                "options": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 5844,
+                    "y": 496,
+                    "z": 44,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "message !=null"
+                },
+                "outputs": {
+                    "text": [
+                        "bCI0XFaHWo"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "number",
+                "info": {
+                    "x": 5819,
+                    "y": 360,
+                    "z": 46,
+                    "color": "#5a5a5a",
+                    "height": 107,
+                    "width": 343
+                },
+                "options": {
+                    "number": "1"
+                },
+                "outputs": {
+                    "number": [
+                        "qy13YyIA85"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "get_item_from_list",
+                "info": {
+                    "x": 6626,
+                    "y": 72,
+                    "z": 47,
+                    "color": "#5a5a5a",
+                    "height": 165,
+                    "width": 443
+                },
+                "inputs": {
+                    "action": "TCXet9zCIz",
+                    "list": "GHothyZiKP",
+                    "custom_position": "cgcOfUgDM3"
+                },
+                "options": {
+                    "position_type": "first"
+                },
+                "outputs": {
+                    "action": [
+                        "HJOPg9Th6P"
+                    ],
+                    "value": [
+                        "6pXchtlDQB"
+                    ]
+                }
+            },
+            {
+                "name": "send_message",
+                "info": {
+                    "x": 2765,
+                    "y": 1341,
+                    "z": 54,
+                    "color": "#5a5a5a",
+                    "height": 237,
+                    "width": 280
+                },
+                "inputs": {
+                    "action": "1zpgR38ctQ",
+                    "channel": "13Zzswym0h",
+                    "text": "f2XS6jy9RL",
+                    "embed": "wU7MnVUKDV",
+                    "attachment": "sIFU1dYdsR",
+                    "split_message": "DESrCSPsSM"
+                },
+                "outputs": {
+                    "action": [
+                        "06p8Dm83rD"
+                    ],
+                    "message": []
+                },
+                "options": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 2212,
+                    "y": 1574,
+                    "z": 55,
+                    "color": "#5a5a5a",
+                    "height": 168,
+                    "width": 422
+                },
+                "options": {
+                    "text": "```Piracy option 1 is now enabled. It will take place once a member makes a grab.```"
+                },
+                "outputs": {
+                    "text": [
+                        "f2XS6jy9RL"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "get_message_info",
+                "info": {
+                    "x": 7479,
+                    "y": 66,
+                    "z": 57,
+                    "color": "#5a5a5a",
+                    "height": 113,
+                    "width": 653
+                },
+                "inputs": {
+                    "action": "HJOPg9Th6P",
+                    "message": "6pXchtlDQB"
+                },
+                "options": {
+                    "message_info": "4"
+                },
+                "outputs": {
+                    "action": [
+                        "a8GJxgKhVZ"
+                    ],
+                    "result": [
+                        "NQcAb0TzVD"
+                    ]
+                }
+            },
+            {
+                "name": "create_embed_message",
+                "info": {
+                    "x": 10270,
+                    "y": 608,
+                    "z": 60,
+                    "color": "#5a5a5a",
+                    "height": 517,
+                    "width": 340
+                },
+                "inputs": {
+                    "action": "TdmeZi0DQt",
+                    "color": "KWhwwp3gDS",
+                    "thumbnail": "Q5zKtHAfgK",
+                    "author_icon": "GzGAfkb4ns",
+                    "author_name": "uRWxbBSo5n",
+                    "author_url": "FvqyerdWDx",
+                    "title": "nlvNAmZIr3",
+                    "url": "wiGn7J6DlU",
+                    "description": "y9tGvtS3II",
+                    "image": "FpszCQkLVN",
+                    "footer_icon": "l2EyA0dRuf",
+                    "footer_text": "3FXHSeHliD",
+                    "timestamp": "Y6TWSxw8Ph"
+                },
+                "outputs": {
+                    "action": [],
+                    "message_embed": []
+                },
+                "options": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 9883,
+                    "y": 692,
+                    "z": 62,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "Done grabbing!"
+                },
+                "outputs": {
+                    "text": [
+                        "nlvNAmZIr3"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 9887,
+                    "y": 835,
+                    "z": 63,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "Tool was made by Wamy#0001"
+                },
+                "outputs": {
+                    "text": [
+                        "y9tGvtS3II"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 53,
+                    "y": 1984,
+                    "z": 81,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "piracy2 "
+                },
+                "outputs": {
+                    "text": [
+                        "FhpXZMtSLA"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "command_event",
+                "info": {
+                    "x": 387,
+                    "y": 1984,
+                    "z": 82,
+                    "color": "#5a5a5a",
+                    "height": 267,
+                    "width": 759
+                },
+                "inputs": {
+                    "command_name": "FhpXZMtSLA",
+                    "custom_prefix": "UO0jpCvP4Y",
+                    "command_slowmode": "xQPTdN2eUv"
+                },
+                "options": {
+                    "command_restriction": "none",
+                    "required_member_permission": "none",
+                    "case_sensitive": "no",
+                    "command_slowmode_restriction": "none"
+                },
+                "outputs": {
+                    "action1": [
+                        "nfYEhUtCks"
+                    ],
+                    "action2": [],
+                    "message": [],
+                    "channel": [
+                        "PuyKNGnmt1",
+                        "fJqtRa1jus"
+                    ],
+                    "user": [
+                        "uCYqfPiadj"
+                    ],
+                    "error_message": []
+                }
+            },
+            {
+                "name": "check_permissions",
+                "info": {
+                    "x": 1179,
+                    "y": 1984,
+                    "z": 83,
+                    "color": "#5a5a5a",
+                    "height": 113,
+                    "width": 739
+                },
+                "inputs": {
+                    "action": "nfYEhUtCks",
+                    "permissions": "uCYqfPiadj"
+                },
+                "options": {
+                    "permission": "ban_members"
+                },
+                "outputs": {
+                    "action1": [
+                        "DzgU44XVt6"
+                    ],
+                    "action2": [
+                        "9boR9t4ZQv"
+                    ]
+                }
+            },
+            {
+                "name": "send_message",
+                "info": {
+                    "x": 1541,
+                    "y": 2130,
+                    "z": 84,
+                    "color": "#5a5a5a",
+                    "height": 237,
+                    "width": 280
+                },
+                "inputs": {
+                    "action": "9boR9t4ZQv",
+                    "channel": "PuyKNGnmt1",
+                    "text": "UcJueChQxC",
+                    "embed": "OgYrWNRVBR",
+                    "attachment": "IA9G0LUFFU",
+                    "split_message": "ipdn6Q3qEN"
+                },
+                "outputs": {
+                    "action": [],
+                    "message": []
+                },
+                "options": {}
+            },
+            {
+                "name": "send_message",
+                "info": {
+                    "x": 2823,
+                    "y": 1986,
+                    "z": 86,
+                    "color": "#5a5a5a",
+                    "height": 237,
+                    "width": 280
+                },
+                "inputs": {
+                    "action": "3m8APLYSWl",
+                    "channel": "fJqtRa1jus",
+                    "text": "kYqvKSHt2g",
+                    "embed": "yOjWTycqVT",
+                    "attachment": "noIwaRPjtX",
+                    "split_message": "vwBjDxaKcX"
+                },
+                "outputs": {
+                    "action": [
+                        "ijOnVhFCJl"
+                    ],
+                    "message": []
+                },
+                "options": {}
+            },
+            {
+                "name": "control_variable",
+                "info": {
+                    "x": 2282,
+                    "y": 1985,
+                    "z": 87,
+                    "color": "#5a5a5a",
+                    "height": 213,
+                    "width": 493
+                },
+                "inputs": {
+                    "action": "DzgU44XVt6",
+                    "name": "0D2Nf3PMWU",
+                    "value": "jZ5jSumMHx",
+                    "workspace_index": "YTfw5qJjyG"
+                },
+                "options": {
+                    "action_type": "set",
+                    "variable_type": "global",
+                    "variable_restriction_type": "current"
+                },
+                "outputs": {
+                    "action": [
+                        "3m8APLYSWl"
+                    ]
+                }
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 1955,
+                    "y": 1988,
+                    "z": 89,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "Piracy"
+                },
+                "outputs": {
+                    "text": [
+                        "0D2Nf3PMWU"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 2245,
+                    "y": 2239,
+                    "z": 90,
+                    "color": "#5a5a5a",
+                    "height": 148,
+                    "width": 482
+                },
+                "options": {
+                    "text": "```Piracy option 2 is now enabled. It will take place once a member makes a grab.```"
+                },
+                "outputs": {
+                    "text": [
+                        "kYqvKSHt2g"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "control_variable",
+                "info": {
+                    "x": 2249,
+                    "y": 1341,
+                    "z": 91,
+                    "color": "#5a5a5a",
+                    "height": 213,
+                    "width": 493
+                },
+                "inputs": {
+                    "action": "0HQBuryTjQ",
+                    "name": "IpFQqDmFql",
+                    "value": "jTQ7D4XBQ2",
+                    "workspace_index": "4SJTnGEkKF"
+                },
+                "options": {
+                    "action_type": "set",
+                    "variable_type": "global",
+                    "variable_restriction_type": "current"
+                },
+                "outputs": {
+                    "action": [
+                        "1zpgR38ctQ"
+                    ]
+                }
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 1922,
+                    "y": 1337,
+                    "z": 92,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "Piracy"
+                },
+                "outputs": {
+                    "text": [
+                        "IpFQqDmFql"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "number",
+                "info": {
+                    "x": 1862,
+                    "y": 2143,
+                    "z": 93,
+                    "color": "#5a5a5a",
+                    "height": 107,
+                    "width": 343
+                },
+                "options": {
+                    "number": "2"
+                },
+                "outputs": {
+                    "number": [
+                        "jZ5jSumMHx"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "number",
+                "info": {
+                    "x": 1838,
+                    "y": 1483,
+                    "z": 94,
+                    "color": "#5a5a5a",
+                    "height": 107,
+                    "width": 343
+                },
+                "options": {
+                    "number": "1"
+                },
+                "outputs": {
+                    "number": [
+                        "jTQ7D4XBQ2"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "get_variable",
+                "info": {
+                    "x": 7642,
+                    "y": 203,
+                    "z": 95,
+                    "color": "#5a5a5a",
+                    "height": 165,
+                    "width": 493
+                },
+                "inputs": {
+                    "action": "a8GJxgKhVZ",
+                    "name": "aIosw75Ogt",
+                    "workspace_index": "UOWKAfHk5l"
+                },
+                "options": {
+                    "variable_type": "global",
+                    "variable_restriction_type": "current"
+                },
+                "outputs": {
+                    "action": [
+                        "PBT8Mv7QGr"
+                    ],
+                    "value": [
+                        "AFqQ7rrdIq",
+                        "uWfkY9Rm29",
+                        "MsFIHuVsHq",
+                        "B60FUIsd8j"
+                    ]
+                }
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 7308,
+                    "y": 218,
+                    "z": 96,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "Piracy"
+                },
+                "outputs": {
+                    "text": [
+                        "aIosw75Ogt"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "check_comparison",
+                "info": {
+                    "x": 7638,
+                    "y": 393,
+                    "z": 97,
+                    "color": "#5a5a5a",
+                    "height": 144,
+                    "width": 494
+                },
+                "inputs": {
+                    "action": "PBT8Mv7QGr",
+                    "value1": "AFqQ7rrdIq",
+                    "value2": "qalVesbdr0"
+                },
+                "options": {
+                    "comparison_type": "equal"
+                },
+                "outputs": {
+                    "action1": [
+                        "hraxoz8oyO"
+                    ],
+                    "action2": [
+                        "M5B0e4saDg"
+                    ]
+                }
+            },
+            {
+                "name": "number",
+                "info": {
+                    "x": 7259,
+                    "y": 411,
+                    "z": 98,
+                    "color": "#5a5a5a",
+                    "height": 107,
+                    "width": 343
+                },
+                "options": {
+                    "number": "1"
+                },
+                "outputs": {
+                    "number": [
+                        "qalVesbdr0"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "check_comparison",
+                "info": {
+                    "x": 7636,
+                    "y": 561,
+                    "z": 99,
+                    "color": "#5a5a5a",
+                    "height": 144,
+                    "width": 494
+                },
+                "inputs": {
+                    "action": "M5B0e4saDg",
+                    "value1": "uWfkY9Rm29",
+                    "value2": "af032ZFFlm"
+                },
+                "options": {
+                    "comparison_type": "equal"
+                },
+                "outputs": {
+                    "action1": [
+                        "8CAQ4nnPmF"
+                    ],
+                    "action2": [
+                        "UbkfZF9jyL"
+                    ]
+                }
+            },
+            {
+                "name": "check_comparison",
+                "info": {
+                    "x": 7641,
+                    "y": 726,
+                    "z": 100,
+                    "color": "#5a5a5a",
+                    "height": 144,
+                    "width": 494
+                },
+                "inputs": {
+                    "action": "UbkfZF9jyL",
+                    "value1": "MsFIHuVsHq",
+                    "value2": "waG1O4EgSZ"
+                },
+                "options": {
+                    "comparison_type": "equal"
+                },
+                "outputs": {
+                    "action1": [
+                        "H6PT9zzLsd"
+                    ],
+                    "action2": [
+                        "pM2vkhLnRA"
+                    ]
+                }
+            },
+            {
+                "name": "check_comparison",
+                "info": {
+                    "x": 7639,
+                    "y": 900,
+                    "z": 101,
+                    "color": "#5a5a5a",
+                    "height": 144,
+                    "width": 494
+                },
+                "inputs": {
+                    "action": "pM2vkhLnRA",
+                    "value1": "B60FUIsd8j",
+                    "value2": "JaKzHSfG6f"
+                },
+                "options": {
+                    "comparison_type": "equal"
+                },
+                "outputs": {
+                    "action1": [
+                        "QTX6F497nB"
+                    ],
+                    "action2": [
+                        "kukOSoZrZl"
+                    ]
+                }
+            },
+            {
+                "name": "number",
+                "info": {
+                    "x": 7260,
+                    "y": 595,
+                    "z": 102,
+                    "color": "#5a5a5a",
+                    "height": 107,
+                    "width": 343
+                },
+                "options": {
+                    "number": "2"
+                },
+                "outputs": {
+                    "number": [
+                        "af032ZFFlm"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "number",
+                "info": {
+                    "x": 7264,
+                    "y": 749,
+                    "z": 103,
+                    "color": "#5a5a5a",
+                    "height": 107,
+                    "width": 343
+                },
+                "options": {
+                    "number": "3"
+                },
+                "outputs": {
+                    "number": [
+                        "waG1O4EgSZ"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "number",
+                "info": {
+                    "x": 7261,
+                    "y": 917,
+                    "z": 104,
+                    "color": "#5a5a5a",
+                    "height": 107,
+                    "width": 343
+                },
+                "options": {
+                    "number": "4"
+                },
+                "outputs": {
+                    "number": [
+                        "JaKzHSfG6f"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "send_message",
+                "info": {
+                    "x": 7643,
+                    "y": 1082,
+                    "z": 105,
+                    "color": "#5a5a5a",
+                    "height": 237,
+                    "width": 280
+                },
+                "inputs": {
+                    "action": "kukOSoZrZl",
+                    "channel": "6h2CHk0HIS",
+                    "text": "4XhSrY3AlL",
+                    "embed": "zFvhr8FKeM",
+                    "attachment": "qEPu8pSOSw",
+                    "split_message": "tEUWDsLRDA"
+                },
+                "outputs": {
+                    "action": [
+                        "AaaJkgDTMb"
+                    ],
+                    "message": []
+                },
+                "options": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 7298,
+                    "y": 1194,
+                    "z": 106,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "```No piracy option enabled. Please ask server administrator, to enable a piracy option to continue.```"
+                },
+                "outputs": {
+                    "text": [
+                        "4XhSrY3AlL"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "console_log",
+                "info": {
+                    "x": 7948,
+                    "y": 1206,
+                    "z": 107,
+                    "color": "#5a5a5a",
+                    "height": 113,
+                    "width": 211
+                },
+                "inputs": {
+                    "action": "AaaJkgDTMb",
+                    "value": "FMrWxckfp3"
+                },
+                "outputs": {
+                    "action": []
+                },
+                "options": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 7603,
+                    "y": 1344,
+                    "z": 108,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "Grab was cancelled."
+                },
+                "outputs": {
+                    "text": [
+                        "FMrWxckfp3"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "console_log",
+                "info": {
+                    "x": 3143,
+                    "y": 2104,
+                    "z": 109,
+                    "color": "#5a5a5a",
+                    "height": 113,
+                    "width": 211
+                },
+                "inputs": {
+                    "action": "ijOnVhFCJl",
+                    "value": "qxtnudIv8c"
+                },
+                "outputs": {
+                    "action": []
+                },
+                "options": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 2774,
+                    "y": 2254,
+                    "z": 110,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "```Piracy option 2 is now enabled. It will take place once a member makes a grab.```"
+                },
+                "outputs": {
+                    "text": [
+                        "qxtnudIv8c"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "run_javascript_code",
+                "info": {
+                    "x": 8361,
+                    "y": 1726,
+                    "z": 111,
+                    "color": "#5a5a5a",
+                    "height": 268,
+                    "width": 681
+                },
+                "inputs": {
+                    "action": "QTX6F497nB",
+                    "javascript_code": "zDpsopoAxC",
+                    "value1": "NQcAb0TzVD",
+                    "value2": "jhfoRTyK0i",
+                    "value3": "4ojNpaQ1ze"
+                },
+                "options": {
+                    "block_behavior": "yes"
+                },
+                "outputs": {
+                    "action": [
+                        "YtO4MtQ3qF"
+                    ],
+                    "return_value": [
+                        "45kaNCkCef"
+                    ],
+                    "time_taken": [],
+                    "value1": [],
+                    "value2": [],
+                    "value3": [],
+                    "error_message": []
+                }
+            },
+            {
+                "name": "run_javascript_code",
+                "info": {
+                    "x": 9093,
+                    "y": 1722,
+                    "z": 112,
+                    "color": "#5a5a5a",
+                    "height": 268,
+                    "width": 681
+                },
+                "inputs": {
+                    "action": "YtO4MtQ3qF",
+                    "javascript_code": "A2JviutUL9",
+                    "value1": "45kaNCkCef",
+                    "value2": "yhXBbI74cO",
+                    "value3": "Dg3suJeqc0"
+                },
+                "options": {
+                    "block_behavior": "yes"
+                },
+                "outputs": {
+                    "action": [
+                        "GeLBiM37ZO"
+                    ],
+                    "return_value": [
+                        "yQyj11LJ0k"
+                    ],
+                    "time_taken": [
+                        "CpTBSxtAYo"
+                    ],
+                    "value1": [],
+                    "value2": [],
+                    "value3": [],
+                    "error_message": []
+                }
+            },
+            {
+                "name": "create_embed_message",
+                "info": {
+                    "x": 10281,
+                    "y": 1672,
+                    "z": 113,
+                    "color": "#5a5a5a",
+                    "height": 517,
+                    "width": 340
+                },
+                "inputs": {
+                    "action": "SGqO3CbdIs",
+                    "color": "E6HWFLyRJG",
+                    "thumbnail": "cKaCWjeJZk",
+                    "author_icon": "KGvtqC9M52",
+                    "author_name": "CyPUyWFACL",
+                    "author_url": "93JunxTC52",
+                    "title": "oKjYm0j1AF",
+                    "url": "yQyj11LJ0k",
+                    "description": "H9rwYT4NTY",
+                    "image": "Qrur2JloMQ",
+                    "footer_icon": "RSWVKoMF1w",
+                    "footer_text": "Fn0eUODr33",
+                    "timestamp": "ylXt2FpYdv"
+                },
+                "outputs": {
+                    "action": [],
+                    "message_embed": []
+                },
+                "options": {}
+            },
+            {
+                "name": "create_embed_message",
+                "info": {
+                    "x": 10271,
+                    "y": 70,
+                    "z": 114,
+                    "color": "#5a5a5a",
+                    "height": 517,
+                    "width": 340
+                },
+                "inputs": {
+                    "action": "Gf9AKi2i9l",
+                    "color": "eZOlr5nfHb",
+                    "thumbnail": "sAN1pnhXtg",
+                    "author_icon": "6BjEoMtsTs",
+                    "author_name": "C4RHEANpPL",
+                    "author_url": "uKvXlp0zD3",
+                    "title": "WorRJHIi41",
+                    "url": "oYhe1ugzS9",
+                    "description": "qo9FVT1mwa",
+                    "image": "h7B7TUQCB5",
+                    "footer_icon": "L9xHu1t10H",
+                    "footer_text": "a7kuNmDlQL",
+                    "timestamp": "issEnCGcXo"
+                },
+                "outputs": {
+                    "action": [],
+                    "message_embed": []
+                },
+                "options": {}
+            },
+            {
+                "name": "create_embed_message",
+                "info": {
+                    "x": 10273,
+                    "y": 1140,
+                    "z": 115,
+                    "color": "#5a5a5a",
+                    "height": 517,
+                    "width": 340
+                },
+                "inputs": {
+                    "action": "8lmX5wk0dI",
+                    "color": "w8AUhl4dlc",
+                    "thumbnail": "ptFObFDPFq",
+                    "author_icon": "fzSemmDhoV",
+                    "author_name": "iAcWhIpVAT",
+                    "author_url": "GHRfbULH3U",
+                    "title": "fZ0hhWsB8L",
+                    "url": "xEl5mlAxeJ",
+                    "description": "UUWdgxLuxb",
+                    "image": "tHN8bWzmOI",
+                    "footer_icon": "SqFvsfLs3F",
+                    "footer_text": "vxV4alqCfG",
+                    "timestamp": "hUzPeJdGj4"
+                },
+                "outputs": {
+                    "action": [],
+                    "message_embed": []
+                },
+                "options": {}
+            },
+            {
+                "name": "run_javascript_code",
+                "info": {
+                    "x": 9109,
+                    "y": 104,
+                    "z": 116,
+                    "color": "#5a5a5a",
+                    "height": 268,
+                    "width": 681
+                },
+                "inputs": {
+                    "action": "hraxoz8oyO",
+                    "javascript_code": "SpypE8gF0C",
+                    "value1": "OkPam3LlcY",
+                    "value2": "x9r7irwJ1E",
+                    "value3": "ELvK5urzZ3"
+                },
+                "options": {
+                    "block_behavior": "yes"
+                },
+                "outputs": {
+                    "action": [
+                        "RHwsYhMnbv"
+                    ],
+                    "return_value": [
+                        "oYhe1ugzS9"
+                    ],
+                    "time_taken": [
+                        "h1qoY8d0HB"
+                    ],
+                    "value1": [],
+                    "value2": [],
+                    "value3": [],
+                    "error_message": []
+                }
+            },
+            {
+                "name": "run_javascript_code",
+                "info": {
+                    "x": 8398,
+                    "y": 633,
+                    "z": 117,
+                    "color": "#5a5a5a",
+                    "height": 268,
+                    "width": 681
+                },
+                "inputs": {
+                    "action": "8CAQ4nnPmF",
+                    "javascript_code": "n70aRcLi10",
+                    "value1": "cKwr61FQ8N",
+                    "value2": "9JvjYntN9g",
+                    "value3": "qzBlsaT0yB"
+                },
+                "options": {
+                    "block_behavior": "yes"
+                },
+                "outputs": {
+                    "action": [
+                        "fhBxS9PgWx"
+                    ],
+                    "return_value": [
+                        "xnhNcQZ4uR"
+                    ],
+                    "time_taken": [],
+                    "value1": [],
+                    "value2": [],
+                    "value3": [],
+                    "error_message": []
+                }
+            },
+            {
+                "name": "run_javascript_code",
+                "info": {
+                    "x": 9118,
+                    "y": 633,
+                    "z": 118,
+                    "color": "#5a5a5a",
+                    "height": 268,
+                    "width": 681
+                },
+                "inputs": {
+                    "action": "fhBxS9PgWx",
+                    "javascript_code": "qZ3rjcngau",
+                    "value1": "xnhNcQZ4uR",
+                    "value2": "S8LBkvzUAf",
+                    "value3": "cckbDMXCfm"
+                },
+                "options": {
+                    "block_behavior": "yes"
+                },
+                "outputs": {
+                    "action": [
+                        "qkAJMRPKZe"
+                    ],
+                    "return_value": [
+                        "FpszCQkLVN"
+                    ],
+                    "time_taken": [
+                        "ZTyctz1M3k"
+                    ],
+                    "value1": [],
+                    "value2": [],
+                    "value3": [],
+                    "error_message": []
+                }
+            },
+            {
+                "name": "run_javascript_code",
+                "info": {
+                    "x": 9115,
+                    "y": 1227,
+                    "z": 119,
+                    "color": "#5a5a5a",
+                    "height": 268,
+                    "width": 681
+                },
+                "inputs": {
+                    "action": "H6PT9zzLsd",
+                    "javascript_code": "jPEdLUYqAb",
+                    "value1": "ltQIfWAVjl",
+                    "value2": "blJpMRtoai",
+                    "value3": "hDxIunTTjN"
+                },
+                "options": {
+                    "block_behavior": "yes"
+                },
+                "outputs": {
+                    "action": [
+                        "zjqdt8xIkv"
+                    ],
+                    "return_value": [
+                        "xEl5mlAxeJ"
+                    ],
+                    "time_taken": [
+                        "qG6qhHHZVW"
+                    ],
+                    "value1": [],
+                    "value2": [],
+                    "value3": [],
+                    "error_message": []
+                }
+            },
+            {
+                "name": "transform_value",
+                "info": {
+                    "x": 9275,
+                    "y": 2033,
+                    "z": 120,
+                    "color": "#5a5a5a",
+                    "height": 113,
+                    "width": 491
+                },
+                "inputs": {
+                    "action": "GeLBiM37ZO",
+                    "value": "CpTBSxtAYo"
+                },
+                "options": {
+                    "transformation_type": "text"
+                },
+                "outputs": {
+                    "action": [
+                        "SGqO3CbdIs"
+                    ],
+                    "result": [
+                        "Fn0eUODr33"
+                    ]
+                }
+            },
+            {
+                "name": "transform_value",
+                "info": {
+                    "x": 9286,
+                    "y": 1512,
+                    "z": 121,
+                    "color": "#5a5a5a",
+                    "height": 113,
+                    "width": 491
+                },
+                "inputs": {
+                    "action": "zjqdt8xIkv",
+                    "value": "qG6qhHHZVW"
+                },
+                "options": {
+                    "transformation_type": "number1"
+                },
+                "outputs": {
+                    "action": [
+                        "8lmX5wk0dI"
+                    ],
+                    "result": [
+                        "vxV4alqCfG"
+                    ]
+                }
+            },
+            {
+                "name": "transform_value",
+                "info": {
+                    "x": 9303,
+                    "y": 924,
+                    "z": 122,
+                    "color": "#5a5a5a",
+                    "height": 113,
+                    "width": 491
+                },
+                "inputs": {
+                    "action": "qkAJMRPKZe",
+                    "value": "ZTyctz1M3k"
+                },
+                "options": {
+                    "transformation_type": "number1"
+                },
+                "outputs": {
+                    "action": [
+                        "TdmeZi0DQt"
+                    ],
+                    "result": [
+                        "3FXHSeHliD"
+                    ]
+                }
+            },
+            {
+                "name": "transform_value",
+                "info": {
+                    "x": 9295,
+                    "y": 397,
+                    "z": 123,
+                    "color": "#5a5a5a",
+                    "height": 113,
+                    "width": 491
+                },
+                "inputs": {
+                    "action": "RHwsYhMnbv",
+                    "value": "h1qoY8d0HB"
+                },
+                "options": {
+                    "transformation_type": "number1"
+                },
+                "outputs": {
+                    "action": [
+                        "Gf9AKi2i9l"
+                    ],
+                    "result": [
+                        "a7kuNmDlQL"
+                    ]
+                }
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 9940,
+                    "y": 86,
+                    "z": 124,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "Done grabbing!"
+                },
+                "outputs": {
+                    "text": [
+                        "WorRJHIi41"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 9942,
+                    "y": 231,
+                    "z": 125,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "Tool was made by Wamy#0001"
+                },
+                "outputs": {
+                    "text": [
+                        "qo9FVT1mwa"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 9899,
+                    "y": 1200,
+                    "z": 126,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "Done Grabbing!"
+                },
+                "outputs": {
+                    "text": [
+                        "fZ0hhWsB8L"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 9898,
+                    "y": 1337,
+                    "z": 127,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "Tool was made by Wamy#0001"
+                },
+                "outputs": {
+                    "text": [
+                        "UUWdgxLuxb"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 9929,
+                    "y": 1696,
+                    "z": 128,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "Done Grabbing!"
+                },
+                "outputs": {
+                    "text": [
+                        "oKjYm0j1AF"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 9933,
+                    "y": 1834,
+                    "z": 129,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "Tool was made by Wamy#0001"
+                },
+                "outputs": {
+                    "text": [
+                        "H9rwYT4NTY"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "boolean",
+                "info": {
+                    "x": 9968,
+                    "y": 373,
+                    "z": 130,
+                    "color": "#5a5a5a",
+                    "height": 105,
+                    "width": 268
+                },
+                "options": {
+                    "boolean_type": "true"
+                },
+                "outputs": {
+                    "boolean": [
+                        "issEnCGcXo"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "boolean",
+                "info": {
+                    "x": 9919,
+                    "y": 979,
+                    "z": 131,
+                    "color": "#5a5a5a",
+                    "height": 105,
+                    "width": 268
+                },
+                "options": {
+                    "boolean_type": "true"
+                },
+                "outputs": {
+                    "boolean": [
+                        "Y6TWSxw8Ph"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "boolean",
+                "info": {
+                    "x": 9939,
+                    "y": 1473,
+                    "z": 132,
+                    "color": "#5a5a5a",
+                    "height": 105,
+                    "width": 268
+                },
+                "options": {
+                    "boolean_type": "true"
+                },
+                "outputs": {
+                    "boolean": [
+                        "hUzPeJdGj4"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "boolean",
+                "info": {
+                    "x": 9969,
+                    "y": 1977,
+                    "z": 133,
+                    "color": "#5a5a5a",
+                    "height": 105,
+                    "width": 268
+                },
+                "options": {
+                    "boolean_type": "true"
+                },
+                "outputs": {
+                    "boolean": [
+                        "ylXt2FpYdv"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 9247,
+                    "y": 2470,
+                    "z": 134,
+                    "color": "#5a5a5a",
+                    "height": 683,
+                    "width": 1390
+                },
+                "options": {
+                    "text": ""
+                },
+                "outputs": {
+                    "text": [
+                        "A2JviutUL9",
+                        "qZ3rjcngau"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 4594,
+                    "y": 2417,
+                    "z": 135,
+                    "color": "#5a5a5a",
+                    "height": 993,
+                    "width": 1752
+                },
+                "options": {
+                    "text": ""
+                },
+                "outputs": {
+                    "text": [
+                        "zDpsopoAxC"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 6373,
+                    "y": 2428,
+                    "z": 136,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": ""
+                },
+                "outputs": {
+                    "text": [
+                        "jPEdLUYqAb"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 6707,
+                    "y": 2421,
+                    "z": 137,
+                    "color": "#5a5a5a",
+                    "height": 965,
+                    "width": 2023
+                },
+                "options": {
+                    "text": ""
+                },
+                "outputs": {
+                    "text": [
+                        "n70aRcLi10"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 8788,
+                    "y": 2417,
+                    "z": 138,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": ""
+                },
+                "outputs": {
+                    "text": [
+                        "SpypE8gF0C"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "console_log",
+                "info": {
+                    "x": 3086,
+                    "y": 1402,
+                    "z": 139,
+                    "color": "#5a5a5a",
+                    "height": 113,
+                    "width": 211
+                },
+                "inputs": {
+                    "action": "06p8Dm83rD",
+                    "value": "qYKYhKo2oT"
+                },
+                "outputs": {
+                    "action": []
+                },
+                "options": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 2659,
+                    "y": 1581,
+                    "z": 140,
+                    "color": "#5a5a5a",
+                    "height": 185,
+                    "width": 449
+                },
+                "options": {
+                    "text": "```Piracy option 1 is now enabled. It will take place once a member makes a grab.```"
+                },
+                "outputs": {
+                    "text": [
+                        "qYKYhKo2oT"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "console_log",
+                "info": {
+                    "x": 5571,
+                    "y": 340,
+                    "z": 141,
+                    "color": "#5a5a5a",
+                    "height": 113,
+                    "width": 211
+                },
+                "inputs": {
+                    "action": "3x7CtMD8PF",
+                    "value": "vEZwIWPkVv"
+                },
+                "outputs": {
+                    "action": []
+                },
+                "options": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 5190,
+                    "y": 376,
+                    "z": 142,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "lOL"
+                },
+                "outputs": {
+                    "text": [
+                        "vEZwIWPkVv"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "command_event",
+                "info": {
+                    "x": 3054,
+                    "y": 97,
+                    "z": 143,
+                    "color": "#5a5a5a",
+                    "height": 267,
+                    "width": 759
+                },
+                "inputs": {
+                    "command_name": "ObUb6b22Jb",
+                    "custom_prefix": "qjxQ5ea5Xo",
+                    "command_slowmode": "UFnKTVBOyH"
+                },
+                "options": {
+                    "command_restriction": "none",
+                    "required_member_permission": "send_messages",
+                    "case_sensitive": "no",
+                    "command_slowmode_restriction": "none"
+                },
+                "outputs": {
+                    "action1": [
+                        "x2kwoCoYgO"
+                    ],
+                    "action2": [],
+                    "message": [],
+                    "channel": [
+                        "bMeINWwWBq"
+                    ],
+                    "user": [],
+                    "error_message": []
+                }
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 2724,
+                    "y": 97,
+                    "z": 144,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "grab "
+                },
+                "outputs": {
+                    "text": [
+                        "ObUb6b22Jb"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "create_embed_message",
+                "info": {
+                    "x": 3850,
+                    "y": 93,
+                    "z": 145,
+                    "color": "#5a5a5a",
+                    "height": 517,
+                    "width": 340
+                },
+                "inputs": {
+                    "action": "x2kwoCoYgO",
+                    "color": "1Uc1wJANvM",
+                    "thumbnail": "qjVxyPOlYg",
+                    "author_icon": "Bz2cqPsJ8L",
+                    "author_name": "8KILdvJ4I2",
+                    "author_url": "aEMArn6jXS",
+                    "title": "Bz7l67yiKi",
+                    "url": "EK4Y9Q8jX0",
+                    "description": "cqmQ7OA3tM",
+                    "image": "KPpPIyQPMi",
+                    "footer_icon": "CDncwzMSWK",
+                    "footer_text": "857K1iYspj",
+                    "timestamp": "tC7wDj2Orx"
+                },
+                "outputs": {
+                    "action": [
+                        "6DGpyybELb"
+                    ],
+                    "message_embed": [
+                        "4RfVWOldeV"
+                    ]
+                },
+                "options": {}
+            },
+            {
+                "name": "boolean",
+                "info": {
+                    "x": 3566,
+                    "y": 649,
+                    "z": 147,
+                    "color": "#5a5a5a",
+                    "height": 105,
+                    "width": 268
+                },
+                "options": {
+                    "boolean_type": "true"
+                },
+                "outputs": {
+                    "boolean": [
+                        "tC7wDj2Orx"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 3510,
+                    "y": 383,
+                    "z": 148,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "!grab"
+                },
+                "outputs": {
+                    "text": [
+                        "Bz7l67yiKi"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 3510,
+                    "y": 517,
+                    "z": 149,
+                    "color": "#5a5a5a",
+                    "height": 118,
+                    "width": 305
+                },
+                "options": {
+                    "text": "This tool was made by Wamy#0001"
+                },
+                "outputs": {
+                    "text": [
+                        "857K1iYspj"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 3013,
+                    "y": 408,
+                    "z": 150,
+                    "color": "#5a5a5a",
+                    "height": 227,
+                    "width": 461
+                },
+                "options": {
+                    "text": "***Grab Commands***\n```glsl\n!grabswitch to begin switch grabbing process\n!grabwii to begin wii grabbing process\n!grabps4 to being ps4 grabbing process\n!grabxbox to begin xbox grabbing process\nmore to come soon!```"
+                },
+                "outputs": {
+                    "text": [
+                        "cqmQ7OA3tM"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "send_message",
+                "info": {
+                    "x": 3868,
+                    "y": 654,
+                    "z": 151,
+                    "color": "#5a5a5a",
+                    "height": 237,
+                    "width": 280
+                },
+                "inputs": {
+                    "action": "6DGpyybELb",
+                    "channel": "bMeINWwWBq",
+                    "text": "m019qzLgbV",
+                    "embed": "4RfVWOldeV",
+                    "attachment": "HDj34tYW19",
+                    "split_message": "Bv3kHMEWn8"
+                },
+                "outputs": {
+                    "action": [],
+                    "message": []
+                },
+                "options": {}
+            }
+        ],
+        "notes": [
+            {
+                "title": "Logging In",
+                "description": "",
+                "color": "#5a5a5a",
+                "x": 41,
+                "y": 17,
+                "z": 1,
+                "width": 442,
+                "height": 250
+            },
+            {
+                "title": "!help",
+                "description": "",
+                "color": "#5a5a5a",
+                "x": 893,
+                "y": 32,
+                "z": 2,
+                "width": 1535,
+                "height": 1017
+            },
+            {
+                "title": "!grabplaystation",
+                "description": "",
+                "color": "#5a5a5a",
+                "x": 4372,
+                "y": 20,
+                "z": 3,
+                "width": 7157,
+                "height": 2231
+            },
+            {
+                "title": "!piracy1",
+                "description": "",
+                "color": "#5a5a5a",
+                "x": 20,
+                "y": 1256,
+                "z": 4,
+                "width": 3420,
+                "height": 571
+            },
+            {
+                "title": "Java Script Code",
+                "description": "!grabplaystation code. First 2 are for ROM. Last 2 are for Official Store Links.",
+                "color": "#5a5a5a",
+                "x": 4515,
+                "y": 2289,
+                "z": 5,
+                "width": 4640,
+                "height": 1142
+            },
+            {
+                "title": "Base 64 conversion javascript",
+                "description": "Uses \"value 1 input\". Outputs \"Return Output\"",
+                "color": "#5a5a5a",
+                "x": 9208,
+                "y": 2373,
+                "z": 6,
+                "width": 1472,
+                "height": 812
+            },
+            {
+                "title": "!piracy2",
+                "description": "",
+                "color": "#5a5a5a",
+                "x": 35,
+                "y": 1893,
+                "z": 7,
+                "width": 3420,
+                "height": 586
+            },
+            {
+                "title": "!grab",
+                "description": "",
+                "color": "#5a5a5a",
+                "x": 2711,
+                "y": 28,
+                "z": 8,
+                "width": 1594,
+                "height": 916
+            }
+        ]
+    },
+    {
+        "info": {
+            "title": "Workspace Example",
+            "description": "This workspace is for understanding the mechanics of Discord Bot Builder.\n\nBy: Discord Bot Builder",
+            "thumbnail": ""
+        },
+        "blocks": [
+            {
+                "name": "command_event",
+                "info": {
+                    "x": 441,
+                    "y": 275,
+                    "z": 1,
+                    "color": "#ffb700",
+                    "height": 275,
+                    "width": 755
+                },
+                "inputs": {
+                    "command_name": "1T9qCNtdhq",
+                    "custom_prefix": "NCk2pilbnp",
+                    "command_slowmode": "senRSwXsyJ"
+                },
+                "options": {
+                    "command_restriction": "none",
+                    "required_user_permission": "none",
+                    "case_sensitive": "no",
+                    "command_slowmode_restriction": "channel",
+                    "required_member_permission": "none"
+                },
+                "outputs": {
+                    "action1": [
+                        "ksoJ15yimx"
+                    ],
+                    "action2": [],
+                    "message": [],
+                    "channel": [
+                        "VPvCvfHMGI"
+                    ],
+                    "user": [],
+                    "error_message": []
+                }
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 81,
+                    "y": 205,
+                    "z": 2,
+                    "color": "#5a5a5a",
+                    "height": 122,
+                    "width": 296
+                },
+                "options": {
+                    "text": "hello"
+                },
+                "outputs": {
+                    "text": [
+                        "1T9qCNtdhq"
+                    ]
+                },
+                "inputs": {}
+            },
+            {
+                "name": "send_message",
+                "info": {
+                    "x": 1559,
+                    "y": 477,
+                    "z": 3,
+                    "color": "#5a5a5a",
+                    "height": 175,
+                    "width": 230
+                },
+                "inputs": {
+                    "action": "ksoJ15yimx",
+                    "channel": "VPvCvfHMGI",
+                    "text": "dH3EZqxbTj",
+                    "embed": "tKqeph7cFP",
+                    "attachment": "A6fczE2f1b",
+                    "split_message": "e765Sv1Acc"
+                },
+                "outputs": {
+                    "action": [],
+                    "message": []
+                },
+                "options": {}
+            },
+            {
+                "name": "text",
+                "info": {
+                    "x": 1004,
+                    "y": 667,
+                    "z": 4,
+                    "color": "#5a5a5a",
+                    "height": 122,
+                    "width": 296
+                },
+                "options": {
+                    "text": "Hello User, welcome to Discord Bot Builder!"
+                },
+                "outputs": {
+                    "text": [
+                        "dH3EZqxbTj"
+                    ]
+                },
+                "inputs": {}
+            }
+        ],
+        "notes": [
+            {
+                "title": "Command \"hello\"",
+                "description": "Type !hello to trigger this command. Your bot needs to have access to the channel where you typed this command.",
+                "color": "#bf00ff",
+                "x": 71,
+                "y": 105,
+                "z": 1,
+                "width": 1776,
+                "height": 732
+            },
+            {
+                "title": "",
+                "description": "Default prefix: !\n\nYou can change it in the Bot menu and Set Bot Prefix or use the input Custom Prefix if you prefer. ⬆",
+                "color": "#e01515",
+                "x": 83,
+                "y": 579,
+                "z": 2,
+                "width": 664,
+                "height": 90
+            }
+        ]
+    }
+]
