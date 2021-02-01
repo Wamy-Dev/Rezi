@@ -18,6 +18,7 @@ driver = webdriver.Chrome()
 @client.event
 async def on_ready():
     print('Bot is ready.')
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="!help"))
 
 
 @client.command(pass_context = True, aliases = ['Help'])
@@ -235,8 +236,9 @@ async def grab(ctx):
                     html = driver.page_source
                     bSoup = BeautifulSoup(html, 'html.parser')
                     links_list = bSoup.find('a', title = f'Download {name}')
-
-                    embed = discord.Embed(title=f'{game.content}', description= f"`{links_list['href']}`", color=0x3FB02C)
+                    b64bytes = base64.b64encode(links_list['href'].encode("utf-8"))
+                    b64string = str(b64bytes, "utf-8")
+                    embed = discord.Embed(title=f'{game.content}', description= f"`{b64string}`", color=0x3FB02C)
 
                     await ctx.send(embed=embed)
 
