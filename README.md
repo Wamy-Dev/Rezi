@@ -3,6 +3,7 @@
 
 ***This is still in development and may or may not work depending on what I am doing with it at the time.***
 
+#### Also not releasing files until final release
 
 Hello everyone! This is a public repo and source for Rezi, the rom scraper bot. In this Readme you will find all the commands needed to use this bot, contact info, donation info and more. 
 
@@ -21,6 +22,8 @@ This bot includes little features but are very important: Rom searching, Rom dow
 ## Anti-Piracy
 If you so choose this bot can convert the links that it has grabbed to base64, making it so you can keep your server pure.
 
+## How can I help?
+Good question! If you would like to help you can either donate (helps me out a lot) or you can take these files and add your own sources to it! 
 
 ## If you want this bot in your server here is the link: [Server Invite](https://discord.com/api/oauth2/authorize?client_id=796909768940978186&permissions=519232&scope=bot)
 
@@ -33,7 +36,7 @@ If you so choose this bot can convert the links that it has grabbed to base64, m
 ##### If you want to donate to show your thanks: [PayPal](paypal.me/DavidNovencido) or BTC=bc1qlfgg9jzr3dy59meg87n38kmupmdp6pr4y3aee7
 ##### My website: [homeonacloud.com](homeonacloud.com)
 
-
+##### This project was made with community in mind, please be nice and don't steal my work.
 
 
 
