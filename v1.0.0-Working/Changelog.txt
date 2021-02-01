@@ -1,0 +1,4 @@
+-Introduces webscraping modules
+-Can !grab
+-Can grab switch, wii, xbox, and playstation
+-Beautifulness
