@@ -2,7 +2,8 @@
 
 
 ***This is still in development and may or may not work depending on what I am doing with it at the time.***
-#Also not releasing files until final release
+
+#### Also not releasing files until final release
 
 Hello everyone! This is a public repo and source for Rezi, the rom scraper bot. In this Readme you will find all the commands needed to use this bot, contact info, donation info and more. 
 
@@ -35,7 +36,7 @@ Good question! If you would like to help you can either donate (helps me out a l
 ##### If you want to donate to show your thanks: [PayPal](paypal.me/DavidNovencido) or BTC=bc1qlfgg9jzr3dy59meg87n38kmupmdp6pr4y3aee7
 ##### My website: [homeonacloud.com](homeonacloud.com)
 
-#This priject was made with community in mind, please be nice and don't steal my work.
+##### This project was made with community in mind, please be nice and don't steal my work.
 
 
 
