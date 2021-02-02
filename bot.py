@@ -8,6 +8,7 @@ import json
 import base64
 import time
 import os
+from functions import *
 cachewii={}
 cacheps={}
 cacheswitch={}
@@ -20,6 +21,9 @@ async def on_ready():
     print('Bot is ready.')
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="!help"))
 
+async def sendGameQuestion(ctx):
+    q_embed = discord.Embed(title='What game would you like to grab?', color=0xFF0000)
+    await ctx.send(embed=q_embed)   
 
 @client.command(pass_context = True, aliases = ['Help'])
 async def help(ctx):
@@ -31,46 +35,14 @@ async def help(ctx):
     embed.add_field(name = '!grab', value='Pick a console to get a download link from. Options are:\nSwitch\nPlaystation\nXbox\nWii', inline= False)
 
     await ctx.send(author, embed=embed)
-def saveCache():
-    cache=json.dumps(cacheps)
-    open("cacheps.json","w").write(cache)
-    cache=json.dumps(cachewii)
-    open("cachewii.json","w").write(cache)
-    cache=json.dumps(cacheswitch)
-    open("cacheswitch.json","w").write(cache)
-def loadCache():
-    global cacheps,cachewii,cacheswitch
-    try:
-        cacheps=json.loads(open("cacheps.json","r").read())
-        cachewii=json.loads(open("cachewii.json","r").read())
-        cacheswitch=json.loads(open("cacheswitch.json","r").read())
-    except:
-        if(os.path.isfile("cacheps.json")==False):
-            open("cacheps.json","w").write('{}')
-        if(os.path.isfile("cachewii.json")==False):
-            open("cachewii.json","w").write('{}')
-        if(os.path.isfile("cacheswitch.json")==False):
-            open("cacheswitch.json","w").write('{}')
-        print("Created new cache")
-        loadCache()
-loadCache()
-def checkIfWebsiteLoaded(searchTerm,tries):
-    global driver
-    if(tries==5):
-        return
-    try:
-        link = driver.find_element_by_partial_link_text(f'{searchTerm}')
-    except:
-        time.sleep(0.5)
-        checkIfWebsiteLoaded(searchTerm,tries+1)
-        
+
 @client.command(aliases = ['Grab','get','Get'])
 async def grab(ctx):
     global cacheps,cachewii,cacheswitch
     await ctx.send('`What console would you like me to grab?`')
     def check(msg):
         return msg.author == ctx.author and msg.channel == ctx.channel and \
-               msg.content.lower() in ["switch", "wii", "playstation","xbox"]
+               msg.content.lower() in ["switch", "wii", "playstation","xbox","snes","amiga"]
     try:
         msg = await client.wait_for("message", check=check, timeout=15)  # 15 seconds to reply
         if msg.content.lower() == "switch":
@@ -85,6 +57,8 @@ async def grab(ctx):
         elif msg.content.lower() == "xbox":
             pass
             #await ctx.send("You said xbox!")
+        elif msg.content.lower() in {"snes","amiga"}:
+            pass
         else:
             await ctx.send('Invalid choice - please try again!')
 
@@ -97,24 +71,22 @@ async def grab(ctx):
 
             try:
                 game = await client.wait_for("message", check=checkd, timeout=15)  # 15 seconds to reply
-                for i in cacheps:
-                    print(i)
-                    if(i==game.content.lower()):         
-                        embed = discord.Embed(title = f'{game.content}', description= f'`{cacheps[i]}`',color = 0x0000FF)
-                        await ctx.send(embed=embed)
-                        return
+                if(isGamePresentInCache("playstation",game.content.lower())):    
+                    embed = discord.Embed(title = f'{game.content}', description= f'`{getFromCache("playstation",game.content.lower())}`',color = 0x0000FF)
+                    await ctx.send(embed=embed)
+                    return
 
                 txt = game.content.replace(" ", "+")
                 url = f'https://psndl.net/packages?filter=title&order=asc&search={txt}'
                 driver.get(url)
                 
                 try:
-                    checkIfWebsiteLoaded(game.content,0)
+                   
                     try:
                         link = driver.find_element_by_partial_link_text(f'{game.content}')
                     except:
                         try:
-                            link = driver.find_element_by_partial_link_text(f'{game.content}'.title())
+                            link = driver.find_element_by_partial_link_text(f'{game.content}'.lower().title())
                         except:
                             link = driver.find_element_by_partial_link_text(f'{game.content}'.upper())
                     link.click()
@@ -153,10 +125,9 @@ async def grab(ctx):
                     v = pyshorteners.Shortener()
                     ready_link = v.tinyurl.short(g_l[0])
 
-                    b64bytes = base64.b64encode(ready_link.encode("utf-8"))
-                    b64string = str(b64bytes, "utf-8")
-                    cacheps[game.content] = b64string.lower()
-                    saveCache()
+                    b64string = getB64(ready_link.encode("utf-8"))
+                    addToCache("playstation",game.content.lower(),b64string)
+
                     embed = discord.Embed(title = f'{game.content}', description= f'`{b64string}`',color = 0x0000FF)
 
                     await ctx.send(embed=embed)
@@ -167,7 +138,11 @@ async def grab(ctx):
 
             except asyncio.TimeoutError:
                 await ctx.send("```css\nSorry, you didn't reply in time!```")
+        
+        if msg.content.lower() in {"snes","amiga"}:
 
+            print("yo")
+            await ctx.send("yo")
         if msg.content.lower() == 'switch':
             #Switch Download
             q_embed = discord.Embed(title='What game would you like to grab?', color=0xFF0000)
@@ -178,12 +153,10 @@ async def grab(ctx):
             try:
                 game = await client.wait_for("message", check=checkd, timeout=15)  # 15 seconds to reply
                 txt = game.content.replace(" ", "+")
-                for i in cacheswitch:
-                    print(i)
-                    if(i==game.content.lower()):         
-                        embed = discord.Embed(title = f'{game.content}', description= f'`{cacheswitch[i]}`',color = 0x0000FF)
-                        await ctx.send(embed=embed)
-                        return
+                if(isGamePresentInCache("switch",game.content.lower())):  
+                    embed = discord.Embed(title = f'{getFromTitleCache("switch",game.content.lower())}', description= f'`{getFromCache("switch",game.content.lower())}`',color = 0xFF0000)
+                    await ctx.send(embed=embed)
+                    return
                         
                 url = f'https://nsw2u.com/?s={txt}'
                 driver.get(url)
@@ -193,7 +166,7 @@ async def grab(ctx):
                         link = driver.find_element_by_partial_link_text(f'{game.content}')
                     except:
                         try:
-                            link = driver.find_element_by_partial_link_text(f'{game.content}'.title())
+                            link = driver.find_element_by_partial_link_text(f'{game.content}'.lower().title())
                         except:
                             link = driver.find_element_by_partial_link_text(f'{game.content}'.upper())
 
@@ -210,11 +183,13 @@ async def grab(ctx):
                     for i in games_list:
                         if 'https://ouo.io/' in i:
                             n_l.append(i)
-                    b64bytes = base64.b64encode(n_l[0].encode("utf-8"))
-                    b64string = str(b64bytes, "utf-8")
-                    cacheswitch[game.content]=b64string.lower()
-                    saveCache()
-                    embed = discord.Embed(title=f'{game.content}', description=f'`{b64string}`',color=0xFF0000)
+                    
+                    b64string=getB64(n_l[0].encode("utf-8"))
+                    addToCache("switch",game.content.lower(),b64string)
+                    
+                    title=str(bSoup.find("h1",{"class":"entry-title"})).replace('<h1 class="entry-title">',"").replace(' NSP XCI</h1>',"")
+                    addToTitleCache("switch",game.content.lower(),title)
+                    embed = discord.Embed(title=f'{title}', description=f'`{b64string}`',color=0xFF0000)
 
                     await ctx.send(embed=embed)
 
@@ -242,6 +217,11 @@ async def grab(ctx):
 
                 await asyncio.sleep(1)
                 try:
+                    if(isGamePresentInCache("xbox",game.content.lower())):  
+                        embed = discord.Embed(title = f'{game.content}', description= f'`{getFromCache("xbox",game.content.lower())}`',color = 0x0000FF)
+                        await ctx.send(embed=embed)
+                        return
+                        
                     try:
                         link = driver.find_element_by_partial_link_text(f'{game.content}')
                     except:
@@ -257,8 +237,10 @@ async def grab(ctx):
                     html = driver.page_source
                     bSoup = BeautifulSoup(html, 'html.parser')
                     links_list = bSoup.find('a', title = f'Download {name}')
-                    b64bytes = base64.b64encode(links_list['href'].encode("utf-8"))
-                    b64string = str(b64bytes, "utf-8")
+                
+                    b64string = getB64(links_list['href'].encode("utf-8"))
+                    
+                    addToCache("xbox",game.content.lower(),b64string)
                     embed = discord.Embed(title=f'{game.content}', description= f"`{b64string}`", color=0x3FB02C)
 
                     await ctx.send(embed=embed)
