@@ -18,7 +18,7 @@ driver = webdriver.Chrome()
 @client.event
 async def on_ready():
     print('Bot is ready.')
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="!help"))
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="!help"))
 
 
 @client.command(pass_context = True, aliases = ['Help'])
@@ -99,7 +99,7 @@ async def grab(ctx):
                 game = await client.wait_for("message", check=checkd, timeout=15)  # 15 seconds to reply
                 for i in cacheps:
                     print(i)
-                    if(i==game.content):         
+                    if(i==game.content.lower()):         
                         embed = discord.Embed(title = f'{game.content}', description= f'`{cacheps[i]}`',color = 0x0000FF)
                         await ctx.send(embed=embed)
                         return
@@ -110,7 +110,13 @@ async def grab(ctx):
                 
                 try:
                     checkIfWebsiteLoaded(game.content,0)
-                    link = driver.find_element_by_partial_link_text(f'{game.content}')
+                    try:
+                        link = driver.find_element_by_partial_link_text(f'{game.content}')
+                    except:
+                        try:
+                            link = driver.find_element_by_partial_link_text(f'{game.content}'.title())
+                        except:
+                            link = driver.find_element_by_partial_link_text(f'{game.content}'.upper())
                     link.click()
                     await asyncio.sleep(4)
 
@@ -149,7 +155,7 @@ async def grab(ctx):
 
                     b64bytes = base64.b64encode(ready_link.encode("utf-8"))
                     b64string = str(b64bytes, "utf-8")
-                    cacheps[game.content] = b64string
+                    cacheps[game.content] = b64string.lower()
                     saveCache()
                     embed = discord.Embed(title = f'{game.content}', description= f'`{b64string}`',color = 0x0000FF)
 
@@ -174,7 +180,7 @@ async def grab(ctx):
                 txt = game.content.replace(" ", "+")
                 for i in cacheswitch:
                     print(i)
-                    if(i==game.content):         
+                    if(i==game.content.lower()):         
                         embed = discord.Embed(title = f'{game.content}', description= f'`{cacheswitch[i]}`',color = 0x0000FF)
                         await ctx.send(embed=embed)
                         return
@@ -183,8 +189,14 @@ async def grab(ctx):
                 driver.get(url)
                 await asyncio.sleep(1.9)
                 try:
-                    checkIfWebsiteLoaded(game.content)
-                    link = driver.find_element_by_partial_link_text(f'{game.content}')
+                    try:
+                        link = driver.find_element_by_partial_link_text(f'{game.content}')
+                    except:
+                        try:
+                            link = driver.find_element_by_partial_link_text(f'{game.content}'.title())
+                        except:
+                            link = driver.find_element_by_partial_link_text(f'{game.content}'.upper())
+
                     link.click()
                     html = driver.page_source
                     bSoup = BeautifulSoup(html,'html.parser')
@@ -200,6 +212,8 @@ async def grab(ctx):
                             n_l.append(i)
                     b64bytes = base64.b64encode(n_l[0].encode("utf-8"))
                     b64string = str(b64bytes, "utf-8")
+                    cacheswitch[game.content]=b64string.lower()
+                    saveCache()
                     embed = discord.Embed(title=f'{game.content}', description=f'`{b64string}`',color=0xFF0000)
 
                     await ctx.send(embed=embed)
@@ -228,7 +242,14 @@ async def grab(ctx):
 
                 await asyncio.sleep(1)
                 try:
-                    link = driver.find_element_by_partial_link_text(f'{game.content}')
+                    try:
+                        link = driver.find_element_by_partial_link_text(f'{game.content}')
+                    except:
+                        try:
+                            link = driver.find_element_by_partial_link_text(f'{game.content}'.title())
+                        except:
+                            link = driver.find_element_by_partial_link_text(f'{game.content}'.upper())
+                        
                     name = link.text
                     #link.click()
                     await asyncio.sleep(1.9)
@@ -267,7 +288,7 @@ async def grab(ctx):
                 for i in cachewii:
                     print(i)
                     print(game.content)
-                    if(i==game.content):
+                    if(i==game.content.lower()):
                         await ctx.send(cachewii[i])
                         return
                 txt = game.content.replace(" ", "+")
@@ -276,7 +297,13 @@ async def grab(ctx):
 
                 await asyncio.sleep(1.9)
                 try:
-                    link = driver.find_element_by_partial_link_text(f'{game.content}')
+                    try:
+                        link = driver.find_element_by_partial_link_text(f'{game.content}')
+                    except:
+                        try:
+                            link = driver.find_element_by_partial_link_text(f'{game.content}'.title())
+                        except:
+                            link = driver.find_element_by_partial_link_text(f'{game.content}'.upper())
                     link.click()
                     html = driver.page_source
                     bSoup = BeautifulSoup(html,'html.parser')
@@ -365,4 +392,4 @@ async def grab(ctx):
 
 
 
-client.run('ODA1NTM5MTYyODU4MDYxOTA1.YBcWzg.Qs22nJRprKbAAXbudems8s_KdCc')
+client.run('Nzk2OTA5NzY4OTQwOTc4MTg2.X_eyDg.P1VoDeL_WHr7oMUiUucv0PQuFgc')
