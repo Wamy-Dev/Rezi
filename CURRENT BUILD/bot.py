@@ -93,7 +93,7 @@ async def grab(ctx):
             try:
                 game = await client.wait_for("message", check=checkd, timeout=15)#allows user 15 seconds to reply
                 if(isGamePresentInCache("playstation",game.content.lower())):    #checks if the game is in cache first
-                    embed = discord.Embed(title = f'{game.content}', description= f'`{getFromCache("playstation",game.content.lower())}`',color = 0x0000FF)#if it is found in cache it is sent
+                    embed = discord.Embed(title = f'{getFromTitleCache("playstation",game.content.lower())}', description= f'`{getFromCache("playstation",game.content.lower())}`',color = 0x0000FF)#if it is found in cache it is sent
                     await ctx.send(embed=embed)#sent cached link
                     return
                 #sets up multiuser
@@ -146,11 +146,13 @@ async def grab(ctx):
                    	#enables base64
                     b64string = getB64(ready_link.encode("utf-8"))
                     addToCache("playstation",game.content.lower(),b64string)
-                    embed = discord.Embed(title = f'{game.content}', description= f'`{b64string}`',color = 0x0000FF)
+                    title=str(bSoup.find("h4")).replace("<h4>","").replace("</h4>","")
+                    addToTitleCache("playstation",game.content.lower(),title)
+                    embed = discord.Embed(title = f'{title}', description= f'`{b64string}`',color = 0x0000FF)
                     await ctx.send(embed=embed)
                     #closes tab and goes back to original
-                    driver.close()
-                    driver.switchTo().window(originalWindow);
+                    #driver.close()
+                    #driver.switchTo().window(originalWindow);
 
                 except Exception as e:
                     print(e)
