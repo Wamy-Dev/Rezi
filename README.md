@@ -36,7 +36,7 @@ Good question! If you would like to help you can either donate (helps me out a l
 ##### If you want to contact me: [Reddit](https://www.reddit.com/user/Official-Wamy), Discord: Wamy#0001 or my personal discord server: [Server](https://discord.gg/47SnjxgBFb)
 ##### Track on Trello: [This Trello](https://trello.com/b/44fXKPFI/discord-scraper-bot)
 ##### If you want to donate to show your thanks: [PayPal](paypal.me/DavidNovencido) or BTC=bc1qlfgg9jzr3dy59meg87n38kmupmdp6pr4y3aee7
-##### My website: [homeonacloud.com](homeonacloud.com)
+##### My website: [homeonacloud.com](https://homeonacloud.com)
 
 ##### This project was made with community in mind, please be nice and don't steal my work.
 
