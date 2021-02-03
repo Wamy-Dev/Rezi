@@ -5,6 +5,8 @@ from discord.ext import commands
 from selenium import webdriver
 from bs4 import BeautifulSoup
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
 from pathlib import Path
 import os
 import json
@@ -89,8 +91,11 @@ async def grab(ctx):
                     embed = discord.Embed(title = f'{game.content}', description= f'`{getFromCache("playstation",game.content.lower())}`',color = 0x0000FF)#if it is found in cache it is sent
                     await ctx.send(embed=embed)#sent cached link
                     return
-
-                txt = game.content.replace(" ", "+")
+                #sets up multiuser
+                actions = ActionChains(driver)
+                actions.send_keys(Keys.LEFT_CONTROL + 't')
+                actions.perform()
+                txt = game.content.replace(" ", "+")#if it cannot find cached links it uses website
                 url = f'https://psndl.net/packages?filter=title&order=asc&search={txt}'
                 driver.get(url)
                 
@@ -138,6 +143,9 @@ async def grab(ctx):
                     addToCache("playstation",game.content.lower(),b64string)
                     embed = discord.Embed(title = f'{game.content}', description= f'`{b64string}`',color = 0x0000FF)
                     await ctx.send(embed=embed)
+                    #closes tab and goes back to original
+                    driver.close()
+                    driver.switchTo().window(originalWindow);
 
                 except Exception as e:
                     print(e)
