@@ -32,6 +32,16 @@ async def on_ready():
     print('Bot is ready.')#tells user, bot is ready
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="!help"))#sets status as "Watching:!help"
 
+#easter egg
+@client.command()
+async def eggotyou(ctx):
+	await ctx.send('Fine. You got me...')
+
+#ping
+@client.command()
+async def ping(ctx):
+	await ctx.send(f'Im not too slow... right? {round(client.latency * 1000)}ms')
+
 #asks user what game they would like to grab
 async def sendGameQuestion(ctx):
     q_embed = discord.Embed(title='What game would you like to grab?', color=0xFF0000)
