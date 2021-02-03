@@ -15,11 +15,6 @@ import time
 import os
 from functions import *
 
-#caches
-cachewii={}
-cacheps={}
-cacheswitch={}
-
 #commands
 client = commands.Bot(command_prefix="!")
 client.remove_command('help')
@@ -268,115 +263,57 @@ async def grab(ctx):
 
         #starts wii module
         if msg.content.lower() == 'wii':
+					    #WII Download
+					    q_embed = discord.Embed(title='What game would you like to grab?', color=0xFFFFFF)
+					    await ctx.send(embed=q_embed)
 
-            q_embed = discord.Embed(title='What game would you like to grab?', color=0xFFFFFF)#asks user what game they would like to grab
-            await ctx.send(embed=q_embed)
+					    def checkd(msg):
+					        return msg.author == ctx.author and msg.channel == ctx.channel
+					    try:
+					        game = await client.wait_for("message", check=checkd, timeout=15)  # 15 seconds to reply
+					        driver.get('https://roms-download.com/roms/nintendo-wii')
 
-            def checkd(msg):
-                return msg.author == ctx.author and msg.channel == ctx.channel
-            try:
-                game = await client.wait_for("message", check=checkd, timeout=15)#allows user 15 seconds to reply
-                for i in cachewii:#looks for wii cache
-                    print(i)
-                    print(game.content)
-                    if(i==game.content.lower()):
-                        await ctx.send(cachewii[i])#sends cached message if found
-                        return
-                txt = game.content.replace(" ", "+")#if not found, moves onto getting it from the site
-                url = f'https://game-2u.com/?s={txt}'
-                driver.get(url)
+					        try:
+					            await asyncio.sleep(2)
+					            #b = driver.find_element_by_class_name('btn btn-h')
+					            ac = ActionChains(driver)
+					            ac.move_by_offset(5,5).click().perform()
+					            await asyncio.sleep(2)
+					            driver.find_element_by_class_name('form-control').send_keys(game.content)
+					            await asyncio.sleep(2)
+					            driver.find_element_by_id('searh_btn').click()
+					            await asyncio.sleep(1)
+					            link = driver.find_element_by_partial_link_text(f'{game.content}')
+					            link.click()
+					            html = driver.page_source
+					            bSoup = BeautifulSoup(html,'html.parser')
+					            links_list = bSoup.find_all('a')
+					            games_list = []
+					            n_l = []
+					            for link in links_list:
+					                if 'href' in link.attrs:
+					                    games_list.append(str(link.attrs['href']))
+					                            # print(str(link.attrs['href']))
+					            for i in games_list:
+					                if '/download/roms/nintendo-wii/' in i:
+					                    n_l.append(i)
 
-                await asyncio.sleep(1.9)
-                try:
-                    try:
-                        link = driver.find_element_by_partial_link_text(f'{game.content}')
-                    except:
-                        try:
-                            link = driver.find_element_by_partial_link_text(f'{game.content}'.title())
-                        except:
-                            link = driver.find_element_by_partial_link_text(f'{game.content}'.upper())
-                    link.click()
-                    html = driver.page_source
-                    bSoup = BeautifulSoup(html,'html.parser')
-                    title = bSoup.find('h1', class_ = "entry-title").text
-                    if 'Wii' in title:
+					            embed = discord.Embed(title=f'{game.content}', description=f'https://roms-download.com{n_l[0]}',color=0xFFFFFF)
 
-                        links_list = bSoup.find_all('a')
-                        games_list = []
-                        n_l = []
-                        for link in links_list:
-                            if 'href' in link.attrs:
-                                games_list.append(str(link.attrs['href']))
-                                # print(str(link.attrs['href']))
-                        for i in games_list:
-                            if 'https://ouo.io/' in i:
-                                n_l.append(i)
-                        cachewii[game.content]=n_l[0]
-                        embed = discord.Embed(title=f'{game.content}', description=f'`{n_l[0]}`',color=0xFFFFFF)
-
-                        await ctx.send(embed=embed)
-
-                    else:
-                        try:
-                            url = f'https://game-2u.com/?s={txt}+wii'
-                            driver.get(url)
-                            await asyncio.sleep(1.9)
-                            link = driver.find_element_by_partial_link_text(f'{game.content}')
-                            link.click()
-                            html = driver.page_source
-                            bSoup = BeautifulSoup(html, 'html.parser')
-
-                            links_list = bSoup.find_all('a')
-                            games_list = []
-                            n_l = []
-                            for link in links_list:
-                                if 'href' in link.attrs:
-                                    games_list.append(str(link.attrs['href']))
-                                    # print(str(link.attrs['href']))
-                            for i in games_list:
-                                if 'https://ouo.io/' in i:
-                                    n_l.append(i)
-
-                            embed = discord.Embed(title=f'{game.content}', description=f'`{n_l[0]}`',color=0xFFFFFF)
-
-                            await ctx.send(embed=embed)
-
-                        except Exception as e:
-                            await ctx.send('```css\nThis game is not for the wii!```')
-                            #print(e)
-
-                except:
-                    try:
-                        url = f'https://game-2u.com/?s={txt}+wii'
-                        driver.get(url)
-                        await asyncio.sleep(1.9)
-                        link = driver.find_element_by_partial_link_text(f'{game.content}')
-                        link.click()
-                        html = driver.page_source
-                        bSoup = BeautifulSoup(html, 'html.parser')
-
-                        links_list = bSoup.find_all('a')
-                        games_list = []
-                        n_l = []
-                        for link in links_list:
-                            if 'href' in link.attrs:
-                                games_list.append(str(link.attrs['href']))
-                                # print(str(link.attrs['href']))
-                        for i in games_list:
-                            if 'https://ouo.io/' in i:
-                                n_l.append(i)
-
-                        embed = discord.Embed(title=f'{game.content}', description=f'`{n_l[0]}`',color=0xFFFFFF)
-
-                        await ctx.send(embed=embed)
+					            await ctx.send(embed=embed)
+					            #print(games_list)
+					        except Exception as e:
+					            print(e)
+					            #ale = driver.switch_to_alert()
+					            #ale.accept()
 
 
-                    except Exception as e:
-                        print(e)
-                        await ctx.send(f"```css\nI could not find a download link for '{game.content}'\nRetry using a different game.```")#bot error: did not find link
 
-            except asyncio.TimeoutError:
-                await ctx.send("Sorry, you didn't reply in time!")#user error: did not respond in 15 seconds
+
+
+
+					    except asyncio.TimeoutError:
+					        await ctx.send("Sorry, you didn't reply in time!")
 
     except asyncio.TimeoutError:
         await ctx.send("Sorry, you didn't reply in time!")#user error: did not respond in 15 seconds
