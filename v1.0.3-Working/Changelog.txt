@@ -1,0 +1,7 @@
+-Added ublock origin extension
+-Added Snes baselines
+-Added Amiga baselines
+-Added Labeling
+-Added global title caching
+-Added global link cache
+-Split caching into functions.py
