@@ -1,0 +1,3 @@
+-Finish title and global link caching
+-Finish adding amiga and snes
+-Finish multiuser use
