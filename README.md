@@ -25,7 +25,7 @@ This bot includes little features but are very important: Rom searching, Rom dow
 If you so choose this bot can convert the links that it has grabbed to base64, making it so you can keep your server pure.
 
 ## How can I help?
-Good question! If you would like to help you can either donate (helps me out a lot) or you can take these files and add your own sources to it! 
+Good question! If you would like to help you can either donate (helps me out a lot) or you can take these files and add your own sources to it! I also am allowing for plugins to be made; if that interests you please head to the [Rezi-Plugins Github](https://github.com/Wamy-Dev/Rezi-Plugins). There you can make an issue and request to have your plugin submitted.
 
 ## If you want this bot in your server here is the link: [Server Invite](https://discord.com/api/oauth2/authorize?client_id=796909768940978186&permissions=519232&scope=bot)
 
