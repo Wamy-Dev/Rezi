@@ -35,12 +35,12 @@ async def on_ready():
 #easter egg
 @client.command()
 async def eggotyou(ctx):
-	await ctx.send('Fine. You got me...')
+    await ctx.send('Fine. You got me...')
 
 #ping
 @client.command()
 async def ping(ctx):
-	await ctx.send(f'Im not too slow... right? {round(client.latency * 1000)}ms')
+    await ctx.send(f'Im not too slow... right? {round(client.latency * 1000)}ms')
 
 #asks user what game they would like to grab
 async def sendGameQuestion(ctx):
@@ -143,7 +143,7 @@ async def grab(ctx):
                             g_l.append(i)
                     v = pyshorteners.Shortener()
                     ready_link = v.tinyurl.short(g_l[0])
-                   	#enables base64
+                       #enables base64
                     b64string = getB64(ready_link.encode("utf-8"))
                     addToCache("playstation",game.content.lower(),b64string)
                     title=str(bSoup.find("h4")).replace("<h4>","").replace("</h4>","")
@@ -256,7 +256,7 @@ async def grab(ctx):
                     html = driver.page_source
                     bSoup = BeautifulSoup(html, 'html.parser')
                     links_list = bSoup.find('a', title =  f'Download {name}')
-                	#enables base64
+                    #enables base64
                     print(links_list["href"])
                     b64string=getB64(links_list["href"].encode('utf-8'))
                     gameName=links_list["title"].replace("Download ","").replace(".iso","")
@@ -277,63 +277,69 @@ async def grab(ctx):
                 await ctx.send("```css\nSorry, you didn't reply in time!```")#user error: did not respond in 15 seconds
 
 
-        #starts wii module
+            #starts wii module
+            
         if msg.content.lower() == 'wii':
-					    #WII Download
-					    q_embed = discord.Embed(title='What game would you like to grab?', color=0xFFFFFF)
-					    await ctx.send(embed=q_embed)
+                
+                q_embed = discord.Embed(title='What game would you like to grab?', color=0xFFFFFF)
+                await ctx.send(embed=q_embed)
 
-					    def checkd(msg):
-					        return msg.author == ctx.author and msg.channel == ctx.channel
-					    try:
-					        game = await client.wait_for("message", check=checkd, timeout=15)  # 15 seconds to reply
-					        driver.get('https://roms-download.com/roms/nintendo-wii')
+                def checkd(msg):
+                    return msg.author == ctx.author and msg.channel == ctx.channel
+                try:
+                    game = await client.wait_for("message", check=checkd, timeout=15)  # 15 seconds to reply
+                    if(isGamePresentInCache("wii",game.content.lower())):  
+                        embed = discord.Embed(title = f'{game.content}', description= f'`{getFromCache("wii",game.content.lower())}`',color = 0xFFFFFF)
+                        await ctx.send(embed=embed)
+                        return
+                    driver.get('https://roms-download.com/roms/nintendo-wii')
 
-					        try:
-					            await asyncio.sleep(2)
-					            #b = driver.find_element_by_class_name('btn btn-h')
-					            ac = ActionChains(driver)
-					            ac.move_by_offset(5,5).click().perform()
-					            await asyncio.sleep(2)
-					            driver.find_element_by_class_name('form-control').send_keys(game.content)
-					            await asyncio.sleep(2)
-					            driver.find_element_by_id('searh_btn').click()
-					            await asyncio.sleep(1)
-					            link = driver.find_element_by_partial_link_text(f'{game.content}')
-					            link.click()
-					            html = driver.page_source
-					            bSoup = BeautifulSoup(html,'html.parser')
-					            links_list = bSoup.find_all('a')
-					            games_list = []
-					            n_l = []
-					            for link in links_list:
-					                if 'href' in link.attrs:
-					                    games_list.append(str(link.attrs['href']))
-					                            # print(str(link.attrs['href']))
-					            for i in games_list:
-					                if '/download/roms/nintendo-wii/' in i:
-					                    n_l.append(i)
+                    try:
+                        await asyncio.sleep(2)
+                                #b = driver.find_element_by_class_name('btn btn-h')
+                        ac = ActionChains(driver)
+                        ac.move_by_offset(5,5).click().perform()
+                        await asyncio.sleep(1)
+                        driver.find_element_by_class_name('form-control').send_keys(game.content)
+                        await asyncio.sleep(1)
+                        driver.find_element_by_id('searh_btn').click()
+                        await asyncio.sleep(1)
+                        link = driver.find_element_by_partial_link_text(f'{game.content.title()}')
+                        link.click()
+                        html = driver.page_source
+                        bSoup = BeautifulSoup(html,'html.parser')
+                        links_list = bSoup.find_all('a')
+                        games_list = []
+                        n_l = []
+                        for link in links_list:
+                            if 'href' in link.attrs:
+                                games_list.append(str(link.attrs['href']))
+                                
+                                                # print(str(link.attrs['href']))
+                        for i in games_list:
+                            if '/download/roms/nintendo-wii/' in i:
+                                n_l.append(i)
+                        b64string=getB64(f"https://roms-download.com{n_l[0]}".encode("utf-8"))
+                        addToCache("wii",game.content.lower(),b64string)
+                        embed = discord.Embed(title=f'{game.content}', description=f'{b64string}',color=0xFFFFFF)
 
-					            embed = discord.Embed(title=f'{game.content}', description=f'https://roms-download.com{n_l[0]}',color=0xFFFFFF)
-
-					            await ctx.send(embed=embed)
-					            #print(games_list)
-					        except Exception as e:
-					            print(e)
-					            #ale = driver.switch_to_alert()
-					            #ale.accept()
-
-
-
+                        await ctx.send(embed=embed)
+                                #print(games_list)
+                    except Exception as e:
+                        print(e)
+                        await ctx.send(f"```css\nI could not find a download link for '{game.content}'\nRetry using a different game.```")#bot error: could not find link
 
 
 
-					    except asyncio.TimeoutError:
-					        await ctx.send("Sorry, you didn't reply in time!")
+
+
+
+                except asyncio.TimeoutError:
+                    await ctx.send("Sorry, you didn't reply in time!")
 
     except asyncio.TimeoutError:
         await ctx.send("Sorry, you didn't reply in time!")#user error: did not respond in 15 seconds
-
+                    
 
 
 client.run('Nzk2OTA5NzY4OTQwOTc4MTg2.X_eyDg.P1VoDeL_WHr7oMUiUucv0PQuFgc')#token to be entered
