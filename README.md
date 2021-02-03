@@ -10,7 +10,7 @@ Latest Dev= v1.0.4-dev*
 Hello everyone! This is a public repo and source for Rezi, the rom scraper bot. In this Readme you will find all the commands needed to use this bot, contact info, donation info and more. 
 
 ## So what is this thing?
-Glad you asked. Rezi is a functioning Discord bot that allows you to search and grab roms from the great internet. This bot also comes with anti piracy measures that you may choose to enable if you like, which will be explained later.
+Glad you asked. Rezi is a Greek female name for "Gatherer" which I think suits this bot perfectly. Rezi is a functioning Discord bot that allows you to search and grab roms from the great internet. This bot also comes with anti piracy measures that you may choose to enable if you like, which will be explained later.
 
 ## What is supported?
 Currently the bot can grab Switch, Wii, Playstation(mixed), and Xbox(mixed).
