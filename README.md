@@ -1,5 +1,7 @@
 # Rezi
 
+*Latest Stable= v1.0.3-Working |
+Latest Dev= v1.0.4-dev*
 
 ***This is still in development and may or may not work depending on what I am doing with it at the time.***
 
