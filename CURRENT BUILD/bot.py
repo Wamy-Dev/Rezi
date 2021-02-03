@@ -231,16 +231,16 @@ async def grab(ctx):
             try:
                 game = await client.wait_for("message", check=checkd, timeout=15)  # 15 seconds to reply
                 #txt = game.content.replace(" ", "+")
-                url = f'https://1fichier.com/dir/l4nVnLVA'#link to be used
-                driver.get(url)
+
 
                 await asyncio.sleep(1)
                 try:
                     if(isGamePresentInCache("xbox",game.content.lower())):  
-                        embed = discord.Embed(title = f'{game.content}', description= f'`{getFromCache("xbox",game.content.lower())}`',color = 0x0000FF)
+                        embed = discord.Embed(title = f'{getFromTitleCache("xbox",game.content.lower())}', description= f'`{getFromCache("xbox",game.content.lower())}`',color = 0x3FB02C)
                         await ctx.send(embed=embed)
                         return
-                        
+                    url = f'https://1fichier.com/dir/l4nVnLVA?lg=en'#link to be used
+                    driver.get(url)
                     try:
                         link = driver.find_element_by_partial_link_text(f'{game.content}')
                     except:
@@ -255,11 +255,15 @@ async def grab(ctx):
 
                     html = driver.page_source
                     bSoup = BeautifulSoup(html, 'html.parser')
-                    links_list = bSoup.find('a', title = f'Download {name}')
+                    links_list = bSoup.find('a', title =  f'Download {name}')
                 	#enables base64
-                    b64string = getB64(links_list['href'].encode("utf-8"))
+                    print(links_list["href"])
+                    b64string=getB64(links_list["href"].encode('utf-8'))
+                    gameName=links_list["title"].replace("Download ","").replace(".iso","")
+                    print(b64string)
                     addToCache("xbox",game.content.lower(),b64string)#adds finished product to cache
-                    embed = discord.Embed(title=f'{game.content}', description= f"`{b64string}`", color=0x3FB02C)#sends finished embed
+                    addToTitleCache("xbox",game.content.lower(),game.content.lower())
+                    embed = discord.Embed(title=f'{gameName}', description= f"`{b64string}`", color=0x3FB02C)#sends finished embed
                     await ctx.send(embed=embed)#sends message as embed
 
                     #await ctx.send(links_list['href'])
