@@ -26,10 +26,10 @@ client.remove_command('help')
 
 #load extension
 chrome_options = Options()
-chrome_options.add_extension(os.path.abspath('extension_1_32_4_0.crx'))#change to where the extension is in your folder
+chrome_options.add_extension(os.path.abspath('extension_1_32_4_0.crx'))
 
 #load driver
-driver = webdriver.Chrome(chrome_options=chrome_options)
+driver = webdriver.Chrome(options=chrome_options)
 
 #bot loaded
 @client.event
