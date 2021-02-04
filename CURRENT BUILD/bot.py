@@ -69,16 +69,16 @@ async def grab(ctx):
     await ctx.send('`What console would you like me to grab?`')#asks user what console to grab
     def check(msg):
         return msg.author == ctx.author and msg.channel == ctx.channel and \
-               msg.content.lower() in plugins#console options
+               msg.content.lower() in {k.lower(): v for k, v in plugins.items()}#console options
     try:
         msg = await client.wait_for("message", check=check, timeout=15)#allows user 15 seconds to respond
-
-        #starts playstation module
         for i in plugins:
-            if(msg.content.lower()==i):
-                color=0x0000FF
-                if(plugins[i].color!=None):
+            if(msg.content.lower()==i.lower()):
+                print(i.lower())
+                try:
                     color=plugins[i].color
+                except:
+                    color=0x0000FF
                 q_embed = discord.Embed(title='What game would you like to grab?', color=  color )#asks user what game they would like to grab
                 await ctx.send(embed=q_embed)
                 try:
@@ -93,8 +93,8 @@ async def grab(ctx):
                             return
                         linkStr=await plugins[i].get(driver,game.content,i)
                         linkB64=getB64(linkStr[1].encode("utf-8"))
-                        addToCache(i,game.content,linkB64)
-                        addToTitleCache(i,game.content,linkStr[0])
+                        addToCache(i,game.content.lower(),linkB64)
+                        addToTitleCache(i,game.content.lower(),linkStr[0])
                         embed = discord.Embed(title = f'{linkStr[0]}', description= f'`{linkB64}`',color = color)
                         await ctx.send(embed=embed)#sent cached link
                     except Exception as e:

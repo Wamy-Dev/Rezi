@@ -4,7 +4,7 @@ import asyncio
 from bs4 import BeautifulSoup
 import pyshorteners
 modules=["wii"]
-color=0xFFFFFF
+color=0xFFFFFAF
 async def get(driver,searchTerm,moduleName):
                         driver.get('https://roms-download.com/roms/nintendo-wii')
 
