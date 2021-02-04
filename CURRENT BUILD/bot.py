@@ -51,7 +51,24 @@ async def ping(ctx):
 #asks user what game they would like to grab
 async def sendGameQuestion(ctx):
     q_embed = discord.Embed(title='What game would you like to grab?', color=0xFF0000)
-    await ctx.send(embed=q_embed)   
+    await ctx.send(embed=q_embed) 
+
+@client.command()
+async def systems(ctx):
+    q_embed = discord.Embed(title='Systems', color=0xFF0000)
+    text=""
+    length=0
+    for i in plugins:
+        length+=len(i)
+        if(length>128):
+            q_embed.add_field(name="Available Systems",value=text)
+            text=""
+            length=len(i)
+        text+=i+", "
+        
+        
+    q_embed.add_field(name="Available Systems",value=text[:-1])
+    await ctx.send(embed=q_embed)  
 
 #help command
 @client.command(pass_context = True, aliases = ['Help'])
@@ -59,7 +76,8 @@ async def help(ctx):
     author = ctx.message.author
     embed = discord.Embed(colour= discord.Colour.orange())
     embed.set_author(name = 'Help')
-    embed.add_field(name = '!grab', value='Pick a console to get a download link from. Options are:\nSwitch\nPlaystation\nXbox\nWii\nSnes\nAmiga', inline= False)
+    embed.add_field(name = '!grab', value='Pick a console to get a download link from.', inline= False)
+    embed.add_field(name = '!systems', value='Shows all available systems', inline= False)
     await ctx.send(author, embed=embed)
 
 #grab command
