@@ -1,4 +1,0 @@
--Added multiuser
--Finished and perfected title and global caching
--Finished Amiga and Snes
--Fixed wii site

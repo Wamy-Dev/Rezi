@@ -127,4 +127,4 @@ async def grab(ctx):
                     
 
 
-client.run('Nzk2OTA5NzY4OTQwOTc4MTg2.X_eyDg.P1VoDeL_WHr7oMUiUucv0PQuFgc')#token to be entered
+client.run('#your token')#token to be entered
