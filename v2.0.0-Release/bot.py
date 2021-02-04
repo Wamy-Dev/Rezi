@@ -79,6 +79,7 @@ async def help(ctx):
     embed.set_author(name = 'Help')
     embed.add_field(name = '!grab', value='Pick a console to get a download link from.', inline= False)
     embed.add_field(name = '!systems', value='Shows all available systems, this is affeted my the plugins you have installed.', inline= False)
+    embed.add_field(name = '!ping', value='Shows the ping between the bot and the user.', inline= False)
     await ctx.send(author, embed=embed)
 
 #grab command
