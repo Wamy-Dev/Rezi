@@ -26,9 +26,9 @@ plugins={}
 #load driver
 driver = webdriver.Chrome(options=chrome_options)
 
-for file in os.listdir(os.getcwd()+r"\\CURRENT BUILD\\plugins"):
+for file in os.listdir(os.getcwd()+r"plugins"):
     if file.endswith(".py"):
-        print(os.path.join(os.getcwd()+r"\\CURRENT BUILD\\plugins", file))
+        print(os.path.join(os.getcwd()+r"plugins", file))
         tempPlug=importlib.import_module("plugins."+file.replace(".py",""))
         for i in tempPlug.modules:
             plugins[i] = tempPlug 
