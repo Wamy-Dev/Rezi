@@ -26,9 +26,9 @@ plugins={}
 #load driver
 driver = webdriver.Chrome(options=chrome_options)
 
-for file in os.listdir(os.getcwd()+r"plugins"):
+for file in os.listdir(os.getcwd()+r"\\plugins"):
     if file.endswith(".py"):
-        print(os.path.join(os.getcwd()+r"plugins", file))
+        print(os.path.join(os.getcwd()+r"\\plugins", file))
         tempPlug=importlib.import_module("plugins."+file.replace(".py",""))
         for i in tempPlug.modules:
             plugins[i] = tempPlug 
@@ -95,7 +95,7 @@ async def grab(ctx):
                         linkB64=getB64(linkStr[1].encode("utf-8"))
                         addToCache(i,game.content,linkB64)
                         addToTitleCache(i,game.content,linkStr[0])
-                        embed = discord.Embed(title = f'{linkStr[0]}', description= f'`{linkB64}`',color = 0x0000FF)
+                        embed = discord.Embed(title = f'{linkStr[0]}', description= f'`{linkB64}`',color = color)
                         await ctx.send(embed=embed)#sent cached link
                     except Exception as e:
                         print(e)
