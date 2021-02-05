@@ -3,10 +3,6 @@
 *Latest Stable= v2.0.0-Release |
 Latest Dev= CURRENT BUILD*
 
-***This is still in development and may or may not work depending on what I am doing with it at the time.***
-
-#### Also not releasing files until final release
-
 Hello everyone! This is a public repo and source for Rezi, the rom scraper bot. In this Readme you will find all the commands needed to use this bot, contact info, donation info and more. 
 
 ## So what is this thing?
