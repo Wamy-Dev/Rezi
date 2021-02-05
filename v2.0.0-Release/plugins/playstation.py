@@ -57,9 +57,6 @@ async def get(driver,searchTerm,moduleName):
                     v = pyshorteners.Shortener()
                     ready_link = v.tinyurl.short(g_l[0])
                     title=str(bSoup.find("h4")).replace("<h4>","").replace("</h4>","")
-
-
-
                     driver.close()
                     driver.switch_to.window(driver.window_handles[0])
                     time.sleep(2)
