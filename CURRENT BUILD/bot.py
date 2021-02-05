@@ -56,20 +56,65 @@ async def sendGameQuestion(ctx):
 #systems command
 @client.command()
 async def systems(ctx):
-    q_embed = discord.Embed(title='Systems', color=0xFF0000)
+    q_embed = discord.Embed(title='Systems', color=0x8B4513)
     text=""
+    buf=[]
     length=0
     for i in plugins:
         length+=len(i)
-        if(length>128):
-            q_embed.add_field(name="Available Systems",value=text)
+        if(length>256):
+            buf.append(text)
+            
             text=""
             length=len(i)
         text+=i+", "
-        
-        
-    q_embed.add_field(name="Available Systems",value=text[:-1])
-    await ctx.send(embed=q_embed)  
+    q_embed.add_field(name="Available Systems",value=buf[0][:-2])
+
+    message = await ctx.send(embed=q_embed)  
+    await message.add_reaction("⬅️")
+    await message.add_reaction("➡️")
+    i=0
+    try:
+        reactOld = None
+        userOld = None
+        while(True):
+            reaction, user = await client.wait_for("reaction_add",timeout= 100)
+
+            if(message.author.id!=user.id):
+                if(reaction.message==message):
+                    if(reaction.emoji=="➡️"):
+                        if(i<len(buf)-1):
+                            i+=1
+                            embed = discord.Embed(title='Systems', color=0x8B4513)
+                            embed.add_field(name="Available Systems",value=buf[i][:-2])
+                            await message.edit(embed=embed)
+                            await message.remove_reaction(reaction,user)
+                            if(reactOld!=None):
+                                await message.remove_reaction(reactOld,userOld)
+                                reactOld = None
+                                userOld = None
+                        else:
+                            reactOld=reaction
+                            userOld=user
+                    elif(reaction.emoji=="⬅️"):
+                        if(i>0):
+                            i-=1
+                            embed = discord.Embed(title='Systems', color=0x8B4513)
+                            embed.add_field(name="Available Systems",value=buf[i][:-2])
+                            await message.edit(embed=embed)
+                            await message.remove_reaction(reaction,user)
+                            if(reactOld!=None):
+                                await message.remove_reaction(reactOld,userOld)
+                                reactOld = None
+                                userOld = None
+                        else:
+                            reactOld=reaction
+                            userOld=user
+    except:
+        await message.remove_reaction("➡️",client.user)
+        await message.remove_reaction("⬅️",client.user)
+        return
+    
 
 #help command
 @client.command(pass_context = True, aliases = ['Help'])
@@ -127,4 +172,4 @@ async def grab(ctx):
                     
 
 
-client.run('Nzk2OTA5NzY4OTQwOTc4MTg2.X_eyDg.P1VoDeL_WHr7oMUiUucv0PQuFgc')#token to be entered
+client.run('ODA1NTM5MTYyODU4MDYxOTA1.YBcWzg.yi-aAwLysAkjbQovW-iYYt_sk94')#token to be entered
