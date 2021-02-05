@@ -1,4 +1,11 @@
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
+import asyncio
+import time
+from bs4 import BeautifulSoup
+import pyshorteners
 modules=[""]#inseart name of console(s) here
+color=0x#colorcode of the embed
 async def get(driver,searchTerm,moduleName):
     print("ran function")
     #start multiuser
