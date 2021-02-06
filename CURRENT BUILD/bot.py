@@ -15,6 +15,7 @@ import time
 import os
 from functions import *
 import importlib
+import pyyaml
 #commands
 client = commands.Bot(command_prefix="!")
 client.remove_command('help')
@@ -25,6 +26,8 @@ chrome_options.add_extension(os.path.abspath('extension_1_32_4_0.crx'))
 plugins={}
 #load driver
 driver = webdriver.Chrome(options=chrome_options)
+#load token
+token = yaml.safe_load(open('token.yml'))
 
 for file in os.listdir(os.getcwd()+r"\\plugins"):
     if file.endswith(".py"):
@@ -172,4 +175,4 @@ async def grab(ctx):
                     
 
 
-client.run('token goes here')#token to be entered 
+client.run(token["token"])
