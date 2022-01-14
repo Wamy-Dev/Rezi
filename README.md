@@ -35,8 +35,7 @@ Good question! If you would like to help you can either donate (helps me out a l
 
 ##### This bot was made by me, Wamy.
 ##### If you want to contact me: [Reddit](https://www.reddit.com/user/Official-Wamy), Discord: Wamy#0001 or my personal discord server: [Server](https://discord.gg/47SnjxgBFb)
-##### If you want to donate to show your thanks: [PayPal](https://www.paypal.com/paypalme/DavidNovencido) or BTC=bc1q7lk7mpgjjzjfm6xcp6fmn9edtuvwnyr2npqs6l
-
+##### If you want to donate to show your thanks: [on Ko-fi](https://ko-fi.com/H2H07Y9MB), [on PayPal](https://www.paypal.com/paypalme/DavidNovencido) or BTC=bc1q7lk7mpgjjzjfm6xcp6fmn9edtuvwnyr2npqs6l
 ##### This project was made with community in mind, please be nice and don't steal my work.
 
 
