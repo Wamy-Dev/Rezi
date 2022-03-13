@@ -1,24 +1,18 @@
-# Rezi
-
-# This project is deprecated as of now. Please use the Rezi.one website for now. For more information go to the [Rezi.one github](https://github.com/Wamy-Dev/ReziWebsite)
-## I will eventually come back to it once I have the time.
+# Rezi Bot
 
 *Latest Stable= BROKEN |
 Latest Dev= BROKEN*
 
 ## So what is this thing?
-Glad you asked. Rezi is a Greek female name for "Gatherer" which I think suits this bot perfectly. Rezi is a functioning Discord bot that allows you to search and grab roms from the great internet. This bot also comes with anti piracy measures that you may choose to enable if you like, which will be explained later.
+Glad you asked. Rezi is a Greek female name for "Gatherer" which I think suits this bot perfectly. Rezi is a functioning Discord bot that allows you to search and grab roms from the great internet. If you prefer to use the website instead of a discord interface, please go to [the rezi website](https://github.com/Wamy-Dev/ReziWebsite)
 
 ## What is supported?
 Currently the bot can grab from [this list of links](https://github.com/Wamy-Dev/ReziWebsite/wiki)
 
 ## How it works
-Also glad you asked. This bot uses selenium to scrape certain sites to find links. It is automated and highly useful. And yeah, thats really it. There are a few more features that I will tell you about.
+It takes the already used links from the Rezi.one website, and it searches through it using Meilisearch, and then is served to you by discord.
 
-## Features
-This bot includes little features but are very important: Rom searching, Rom downloading, Base64 conversion, multiple user interaction, and more.
-
-## Anti-Piracy
+## Safety
 If you so choose this bot can convert the links that it has grabbed to base64, making it so you can keep your server pure.
 
 ## How can I help?
