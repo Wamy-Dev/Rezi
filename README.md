@@ -10,7 +10,7 @@ Latest Dev= BROKEN*
 Glad you asked. Rezi is a Greek female name for "Gatherer" which I think suits this bot perfectly. Rezi is a functioning Discord bot that allows you to search and grab roms from the great internet. This bot also comes with anti piracy measures that you may choose to enable if you like, which will be explained later.
 
 ## What is supported?
-Currently the bot can grab Switch, Wii, Playstation(mixed), and Xbox(mixed), and many Retro consoles. It can also have plugins added to be able to use more.
+Currently the bot can grab from [this list of links](https://github.com/Wamy-Dev/ReziWebsite/wiki)
 
 ## How it works
 Also glad you asked. This bot uses selenium to scrape certain sites to find links. It is automated and highly useful. And yeah, thats really it. There are a few more features that I will tell you about.
