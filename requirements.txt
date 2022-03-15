@@ -1,0 +1,4 @@
+discord
+meilisearch
+asyncio
+python-decouple
