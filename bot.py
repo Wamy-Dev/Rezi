@@ -5,7 +5,7 @@ from discord.ext import commands
 import json
 import decouple
 from decouple import config
-
+import base64
 
 SEARCHCLIENT = config('SEARCHCLIENT')
 SEARCHAPIKEY = config('SEARCHAPIKEY')
@@ -29,6 +29,9 @@ async def eggotyou(ctx):
 @client.command()
 async def project(ctx):
     await ctx.send('```https://github.com/Wamy-Dev/Rezi```')
+@client.command()
+async def convert(ctx):
+    await ctx.send('```https://www.base64decode.org/```')
 #easter egg
 @client.command()
 async def website(ctx):
@@ -46,9 +49,10 @@ async def help(ctx):
     embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar_url)
     embed.add_field(name = '$grab', value='Pick a console to get a download link from.', inline = False)
     embed.add_field(name = '$ping', value='Shows the ping between the bot and the user.', inline = False)
-    embed.add_field(name = '$project', value='View the project github', inline = False)
-    embed.add_field(name = '$website', value='View the rezi website', inline = False)
-    embed.add_field(name = '$donate', value='Donate to the project', inline = False)
+    embed.add_field(name = '$project', value='View the project github.', inline = False)
+    embed.add_field(name = '$website', value='View the rezi website.', inline = False)
+    embed.add_field(name = '$donate', value='Donate to the project.', inline = False)
+    embed.add_field(name = '$convert', value='Convert your link so you can use it.', inline = False)
     await ctx.send(embed = embed)
 @client.command(aliases = ['Grab', 'GRAB', 'get', 'GET', 'search', 'SEARCH'])
 async def grab(ctx):
@@ -80,13 +84,21 @@ async def grab(ctx):
         link2link = link2link.replace(" ", "")
         link3link = link3link.replace(" ", "")
         link4link = link4link.replace(" ", "")
+        link1b64 = base64.b64encode(link1link.encode("UTF-8"))
+        link1b64 = link1b64.decode("UTF-8")
+        link2b64 = base64.b64encode(link2link.encode("UTF-8"))
+        link2b64 = link2b64.decode("UTF-8")
+        link3b64 = base64.b64encode(link3link.encode("UTF-8"))
+        link3b64 = link3b64.decode("UTF-8")
+        link4b64 = base64.b64encode(link4link.encode("UTF-8"))
+        link4b64 = link4b64.decode("UTF-8")
         embed = discord.Embed(title = "Here are your top 4 results:", colour = discord.Colour.from_rgb(4,132,188))
         embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar_url)
-        embed.add_field(name = link1title, value = 'https://' + link1link, inline = False)
-        embed.add_field(name = link2title, value = 'https://' + link2link, inline = False)
-        embed.add_field(name = link3title, value = 'https://' + link3link, inline = False)
-        embed.add_field(name = link4title, value = 'https://' + link4link, inline = False)
-        embed.set_footer(text = "To get more results please go to https://rezi.one")
+        embed.add_field(name = link1title, value = link1b64, inline = False)
+        embed.add_field(name = link2title, value = link2b64, inline = False)
+        embed.add_field(name = link3title, value = link3b64, inline = False)
+        embed.add_field(name = link4title, value = link4b64, inline = False)
+        embed.set_footer(text = "To get more results please go to https://rezi.one. To convert do $convert.")
         await ctx.send(embed = embed)
         try: 
             previouscount['times'] += 1
