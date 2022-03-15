@@ -4,7 +4,7 @@
 Latest Dev= v3.0.0*
 
 ## So what is this thing?
-Rezi is a Greek female name for "Gatherer" which I think suits this bot perfectly. Rezi is a functioning Discord bot that allows you to search and grab roms from the great internet. If you prefer to use the website instead of a discord interface, please go to [the rezi website](https://github.com/Wamy-Dev/ReziWebsite)
+Rezi is a Greek female name for "Gatherer" which I think suits this bot perfectly. Rezi is a functioning Discord bot that allows you to search and grab roms from the great internet. If you prefer to use the website instead of a discord interface, please go to [the rezi website](https://github.com/Wamy-Dev/ReziWebsite).
 
 ## What is supported?
 Currently the bot can grab from [this list of links](https://github.com/Wamy-Dev/ReziWebsite/wiki)
