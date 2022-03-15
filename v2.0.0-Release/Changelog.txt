@@ -1,5 +1,0 @@
--Added multiuser
--Finished and perfected title and global caching
--Finished every console from the eye
--Fixed wii site
--Added plugins (customizable!!!)
