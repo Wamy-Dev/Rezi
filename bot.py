@@ -20,7 +20,8 @@ async def on_ready():
     await client.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = "$help"))#sets status as "Watching:!help"
 @client.command()
 async def eggotyou(ctx):
-    await ctx.send('Fine. You got me... screenshot this and send it to me on my discord to have your name put in the source code!')
+    await ctx.send('Fine. You got me... screenshot this and send it to me on my discord to have your name put in the source code!', delete_after=5)
+    await ctx.message.delete()
 @client.command()
 async def project(ctx):
     await ctx.send('```https://github.com/Wamy-Dev/Rezi```')
