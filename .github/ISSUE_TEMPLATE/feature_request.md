@@ -1,13 +1,13 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
-title: "[ENHANCEMENT]"
+about: "Have a good idea? Put it here -> \U0001F9E0"
+title: "[ENCHANCEMENT]"
 labels: enhancement
-assignees: ''
+assignees: Wamy-Dev
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
+**Is your feature request related to a problem? Please describe and reference the bug if possible.**
 A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
 
 **Describe the solution you'd like**
