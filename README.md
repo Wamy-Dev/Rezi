@@ -14,7 +14,7 @@ If you so choose this bot can convert the links that it has grabbed to base64, m
 # How can I help?
 Good question! If you would like to help you can donate (helps me out a lot). This project is finished, and not much is really needed. If you want to fork it and continue it, then go right ahead.
 
-# If you want this bot (limited spots available): [Add Bot](https://discord.com/api/oauth2/authorize?client_id=796909768940978186&permissions=3072&scope=bot)
+# Add to your own server (limited spots available): [Invite Rezi](https://discord.com/api/oauth2/authorize?client_id=796909768940978186&permissions=3072&scope=bot)
 You may also choose to join my own server where I also put out updates and other fun things, [here](https://discord.gg/47SnjxgBFb). You may also want to host this bot yourself, no real reason why you would want that but its dockerized for my sake, so [here](https://hub.docker.com/repository/docker/reziproject/rezibot).
 
 #
