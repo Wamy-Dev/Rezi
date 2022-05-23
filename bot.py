@@ -33,7 +33,7 @@ async def website(ctx):
     await ctx.send('```https://rezi.one```')
 @client.command()
 async def donate(ctx):
-    await ctx.send('```https://homeonacloud.com/pages/donate.html```')
+    await ctx.send('```https://homeonacloud.com/donate```')
 @client.command()
 async def ping(ctx):
     await ctx.send(f'```I`m not too slow... right? {round(client.latency * 1000)}ms```')
