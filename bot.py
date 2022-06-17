@@ -1,17 +1,26 @@
 import discord
-import asyncio
 import meilisearch
+import requests
 from discord.ext import commands
 import json
-import decouple
 from decouple import config
 import base64
-SEARCHCLIENT = config('SEARCHCLIENT')
+from langdetect import detect
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+from google_trans_new import google_translator  
+#env
 SEARCHAPIKEY = config('SEARCHAPIKEY')
 CLIENTTOKEN = config('CLIENTTOKEN')
-f = open('counts.json')
-previouscount = json.load(f)
-searcher = meilisearch.Client(SEARCHCLIENT, SEARCHAPIKEY)
+#firebase
+cred = credentials.Certificate("./creds.json")
+response = requests.get("https://api.parcility.co/db/repos")
+firebase_admin.initialize_app(cred)
+db = firestore.client()
+#meilisearch
+searcher = meilisearch.Client("https://search.rezi.one", SEARCHAPIKEY)
+#discord
 client = commands.Bot(command_prefix = '$')
 client.remove_command('help')
 @client.event
@@ -20,8 +29,7 @@ async def on_ready():
     await client.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = "$help"))#sets status as "Watching:!help"
 @client.command()
 async def eggotyou(ctx):
-    await ctx.send('Fine. You got me... screenshot this and send it to me on my discord to have your name put in the source code!', delete_after=5)
-    await ctx.message.delete()
+    await ctx.send('Fine. You got me... screenshot this and send it to me on my discord to have your name put in the source code!')
 @client.command()
 async def project(ctx):
     await ctx.send('```https://github.com/Wamy-Dev/Rezi```')
@@ -33,7 +41,7 @@ async def website(ctx):
     await ctx.send('```https://rezi.one```')
 @client.command()
 async def donate(ctx):
-    await ctx.send('```https://homeonacloud.com/donate```')
+    await ctx.send('```https://homeonacloud.com/pages/donate.html```')
 @client.command()
 async def ping(ctx):
     await ctx.send(f'```I`m not too slow... right? {round(client.latency * 1000)}ms```')
@@ -61,7 +69,19 @@ async def grab(ctx):
     embed.set_footer(text = "Respond within 15 seconds. If you like this project please donate using $donate")
     await ctx.send(embed = embed)    
     message = await client.wait_for("message", check = check, timeout = 15)
-    content = message.content
+    beforecontent = message.content
+    #translate to english if needed
+    def detect_and_translate(text,target_lang):
+        result_lang = detect(text)
+        if result_lang == target_lang:
+            return text 
+        else:
+            translator = google_translator()
+            translate_text = translator.translate(text,lang_src=result_lang,lang_tgt=target_lang)
+            return translate_text
+    print(detect_and_translate('sometext', target_lang="en"))
+    content=detect_and_translate('sometext', target_lang="en")
+    #
     searchresult = searcher.index('games').search(content, {
         'limit': 4,
         'attributesToRetrieve': ['basename', 'link'],
