@@ -1,6 +1,5 @@
 import discord
 import meilisearch
-import requests
 from discord.ext import commands
 import json
 from decouple import config
@@ -15,13 +14,16 @@ SEARCHAPIKEY = config('SEARCHAPIKEY')
 CLIENTTOKEN = config('CLIENTTOKEN')
 #firebase
 cred = credentials.Certificate("./creds.json")
-response = requests.get("https://api.parcility.co/db/repos")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
+#counts
+doc = db.collection(u'counts').document(u'counts')
 #meilisearch
 searcher = meilisearch.Client("https://search.rezi.one", SEARCHAPIKEY)
 #discord
-client = commands.Bot(command_prefix = '$')
+intents = discord.Intents.default()
+intents.message_content = True
+client = commands.Bot(command_prefix = '$', intents=intents)
 client.remove_command('help')
 @client.event
 async def on_ready():
@@ -41,17 +43,19 @@ async def website(ctx):
     await ctx.send('```https://rezi.one```')
 @client.command()
 async def donate(ctx):
-    await ctx.send('```https://homeonacloud.com/pages/donate.html```')
+    await ctx.send('```https://homeonacloud.com/donate```')
 @client.command()
 async def ping(ctx):
     await ctx.send(f'```I`m not too slow... right? {round(client.latency * 1000)}ms```')
 @client.command()
 async def counts(ctx):
-    await ctx.send(f'```The bot has grabbed {previouscount["times"]} times.```')
+    counts = doc.get()
+    previouscount = counts.to_dict()
+    await ctx.send(f'```The bot has grabbed {str(previouscount["counts"])} times.```')
 @client.command(pass_context = True, aliases = ['Help'])
 async def help(ctx):
     embed = discord.Embed(title = "Here is a command list:", colour= discord.Colour.from_rgb(251,172,4))
-    embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar_url)
+    embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
     embed.add_field(name = '$grab', value='Pick a console to get a download link from.', inline = False)
     embed.add_field(name = '$ping', value='Shows the ping between the bot and the user.', inline = False)
     embed.add_field(name = '$project', value='View the project github.', inline = False)
@@ -65,24 +69,13 @@ async def grab(ctx):
     def check(msg):
         return msg.author == ctx.author and msg.channel == ctx.channel
     embed = discord.Embed(title = "Search for any game imaginable:", colour = discord.Colour.from_rgb(251,172,4))
-    embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar_url)
+    embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
     embed.set_footer(text = "Respond within 15 seconds. If you like this project please donate using $donate")
     await ctx.send(embed = embed)    
     message = await client.wait_for("message", check = check, timeout = 15)
     beforecontent = message.content
-    #translate to english if needed
-    def detect_and_translate(text,target_lang):
-        result_lang = detect(text)
-        if result_lang == target_lang:
-            return text 
-        else:
-            translator = google_translator()
-            translate_text = translator.translate(text,lang_src=result_lang,lang_tgt=target_lang)
-            return translate_text
-    print(detect_and_translate('sometext', target_lang="en"))
-    content=detect_and_translate('sometext', target_lang="en")
     #
-    searchresult = searcher.index('games').search(content, {
+    searchresult = searcher.index('games').search(beforecontent, {
         'limit': 4,
         'attributesToRetrieve': ['basename', 'link'],
         })
@@ -111,19 +104,20 @@ async def grab(ctx):
             link4b64 = base64.b64encode(link4link.encode("UTF-8"))
             link4b64 = link4b64.decode("UTF-8")
             embed = discord.Embed(title = "Here are your top 4 results:", colour = discord.Colour.from_rgb(4,132,188))
-            embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar_url)
+            embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
             embed.add_field(name = link1title, value = link1b64, inline = False)
             embed.add_field(name = link2title, value = link2b64, inline = False)
             embed.add_field(name = link3title, value = link3b64, inline = False)
             embed.add_field(name = link4title, value = link4b64, inline = False)
             embed.set_footer(text = "To get more results please go to https://rezi.one. To convert do $convert.")
             await ctx.send(embed = embed)
-            try: 
-                previouscount['times'] += 1
-                with open('counts.json', 'w+') as file:
-                    json.dump(previouscount, file)
+            try:
+                counts = doc.get()
+                previouscount = counts.to_dict()
+                newcount = previouscount['counts'] + 1
+                doc.update({u'counts': newcount})
             except: 
-                print('count failed')
+                print('Adding count failed')
         except:
             try:
                 if result:
@@ -132,18 +126,19 @@ async def grab(ctx):
                     link1b64 = base64.b64encode(link1link.encode("UTF-8"))
                     link1b64 = link1b64.decode("UTF-8")
                     embed = discord.Embed(title = "Here is your top result:", colour = discord.Colour.from_rgb(4,132,188))
-                    embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar_url)
+                    embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
                     embed.add_field(name = link1title, value = link1b64, inline = False)
                     embed.set_footer(text = "Only 1 result found. To convert do $convert.")
                     await ctx.send(embed = embed)
                     try:
-                        previouscount['times'] += 1
-                        with open('counts.json', 'w+') as file:
-                            json.dump(previouscount, file)
+                        counts = doc.get()
+                        previouscount = counts.to_dict()
+                        newcount = previouscount['counts'] + 1
+                        doc.update({u'counts': newcount})
                     except:
-                        print('count failed')
+                        print('Adding count failed')
                 else:
-                    await ctx.send(f'```No results found. Thats impossible. Your search was: {content}. Please make sure this was correct.```')
+                    await ctx.send(f'```No results found. Thats impossible. Your search was: {beforecontent}. Please make sure this was correct.```')
             except:
                 try:
                     if result:
@@ -155,19 +150,20 @@ async def grab(ctx):
                         link2b64 = base64.b64encode(link2link.encode("UTF-8"))
                         link2b64 = link2b64.decode("UTF-8")
                         embed = discord.Embed(title = "Here are your top results:", colour = discord.Colour.from_rgb(4,132,188))
-                        embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar_url)
+                        embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
                         embed.add_field(name = link1title, value = link1b64, inline = False)
                         embed.add_field(name = link2title, value = link2b64, inline = False)
                         embed.set_footer(text = "Only 2 results found. To convert do $convert.")
                         await ctx.send(embed = embed)
                         try:
-                            previouscount['times'] += 1
-                            with open('counts.json', 'w+') as file:
-                                json.dump(previouscount, file)
+                            counts = doc.get()
+                            previouscount = counts.to_dict()
+                            newcount = previouscount['counts'] + 1
+                            doc.update({u'counts': newcount})
                         except:
-                            print('count failed')
+                            print('Adding count failed')
                     else:
-                        await ctx.send(f'```No results found. Thats impossible. Your search was: {content}. Please make sure this was correct.```')
+                        await ctx.send(f'```No results found. Thats impossible. Your search was: {beforecontent}. Please make sure this was correct.```')
                 except:
                     try:
                         if result:
@@ -182,20 +178,21 @@ async def grab(ctx):
                             link3b64 = base64.b64encode(link3link.encode("UTF-8"))
                             link3b64 = link3b64.decode("UTF-8")
                             embed = discord.Embed(title = "Here are your top results:", colour = discord.Colour.from_rgb(4,132,188))
-                            embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar_url)
+                            embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
                             embed.add_field(name = link1title, value = link1b64, inline = False)
                             embed.add_field(name = link2title, value = link2b64, inline = False)
                             embed.add_field(name = link3title, value = link3b64, inline = False)
                             embed.set_footer(text = "Only 3 results found. To convert do $convert.")
                             await ctx.send(embed = embed)
                             try:
-                                previouscount['times'] += 1
-                                with open('counts.json', 'w+') as file:
-                                    json.dump(previouscount, file)
+                                counts = doc.get()
+                                previouscount = counts.to_dict()
+                                newcount = previouscount['counts'] + 1
+                                doc.update({u'counts': newcount})
                             except:
-                                print('count failed')
+                                print('Adding count failed')
                         else:
-                            await ctx.send(f'```No results found. Thats impossible. Your search was: {content}. Please make sure this was correct.```')
+                            await ctx.send(f'```No results found. Thats impossible. Your search was: {beforecontent}. Please make sure this was correct.```')
                     except:
                         await ctx.send('```Search failed. This is not normal. Please report this on github by running $project please.```')
 client.run(CLIENTTOKEN)
