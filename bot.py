@@ -39,10 +39,15 @@ async def on_ready():
     await client.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = "$help"))#sets status as "Watching:!help"
 @client.command()
 async def eggotyou(ctx):
-    await ctx.send('Fine. You got me... screenshot this and send it to me on my discord to have your name put in the source code!')
+    await ctx.send('Fine. You got me... screenshot this and send it to me on my discord to have your name put in the source code!', delete_after=5)
+    await ctx.message.delete()
 @client.command()
 async def project(ctx):
-    await ctx.send('```https://github.com/Wamy-Dev/Rezi```')
+    embed = discord.Embed(title = "Rezi Github", colour = discord.Colour.from_rgb(4,132,188))
+    embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
+    embed.add_field(name = '🔗', value='https://github.com/Wamy-Dev/Rezi', inline = False)
+    embed.set_footer(text = "If you like this project please donate using $donate.")
+    await ctx.send(embed = embed)
 @client.command()
 async def convert(ctx):
     def check(msg):
@@ -58,7 +63,6 @@ async def convert(ctx):
             link = base64.b64decode(beforecontent).decode('utf-8')
         except:
             await ctx.send('```❌ Invalid base64 link. Please try again.```')
-
         embed = discord.Embed(title = "Here is your coverted link!", colour = discord.Colour.from_rgb(4,132,188))
         embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
         embed.add_field(name = '🔗', value=f'https://{link}', inline = False)
@@ -68,26 +72,36 @@ async def convert(ctx):
         await ctx.send('```❌ Timed out.```')
 @client.command()
 async def website(ctx):
-    await ctx.send('```https://rezi.one```')
+    embed = discord.Embed(title = "Rezi Website", colour = discord.Colour.from_rgb(4,132,188))
+    embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
+    embed.add_field(name = '🔗', value='https://rezi.one', inline = False)
+    embed.set_footer(text = "If you like this project please donate using $donate.")
+    await ctx.send(embed = embed)
 @client.command()
 async def donate(ctx):
-    await ctx.send('```https://homeonacloud.com/donate```')
+    embed = discord.Embed(title = "Donate to the project", colour = discord.Colour.from_rgb(4,132,188))
+    embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
+    embed.add_field(name = '🔗', value='https://homeonacloud.com/donate', inline = False)
+    embed.set_footer(text = "If you like this project please donate using $donate.")
+    await ctx.send(embed = embed)
 @client.command()
 async def ping(ctx):
-    await ctx.send(f'```I`m not too slow... right? {round(client.latency * 1000)}ms```')
+    txt = str(f"""```css\nIm not too slow right? {round(client.latency * 1000)}ms.```""")
+    await ctx.send(txt)
 @client.command()
 async def counts(ctx):
     counts = doc.get()
     previouscount = counts.to_dict()
-    await ctx.send(f'```The bot has grabbed {str(previouscount["counts"])} times.```')
+    txt = str(f"""```css\nThe bot has grabbed {str(previouscount["counts"])} times.```""")
+    await ctx.send(txt)
 @client.command(pass_context = True, aliases = ['Help'])
 async def help(ctx):
     embed = discord.Embed(title = "Here is a command list:", colour= discord.Colour.from_rgb(251,172,4))
     embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
-    embed.add_field(name = '$grab', value='Pick a console to get a download link from.', inline = False)
+    embed.add_field(name = '$grab', value='Search for a game to download. Returns the link in base64.', inline = False)
     embed.add_field(name = '$ping', value='Shows the ping between the bot and the user.', inline = False)
     embed.add_field(name = '$project', value='View the project github.', inline = False)
-    embed.add_field(name = '$website', value='View the rezi website.', inline = False)
+    embed.add_field(name = '$website', value='View the Rezi website.', inline = False)
     embed.add_field(name = '$donate', value='Donate to the project.', inline = False)
     embed.add_field(name = '$convert', value='Convert your link so you can use it.', inline = False)
     embed.add_field(name = '$counts', value='See how many times the bot has grabbed globally.', inline = False)
