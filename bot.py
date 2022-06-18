@@ -1,13 +1,22 @@
 import discord
 import meilisearch
 from discord.ext import commands
-from langdetect import detect
+from quart import Quart
 from decouple import config
 import base64
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 import asyncio
+import threading
+from hypercorn.asyncio import serve
+#quart
+app = Quart(__name__)
+@app.route("/", methods = ["get"])
+async def index():
+    return '🔎', 200
+def web():
+    app.run()
 #env
 SEARCHAPIKEY = config('SEARCHAPIKEY')
 CLIENTTOKEN = config('CLIENTTOKEN')
@@ -214,4 +223,5 @@ async def grab(ctx):
                             await ctx.send(f'```No results found. Thats impossible. Your search was: {beforecontent}. Please make sure this was correct.```')
                     except:
                         await ctx.send('```Search failed. This is not normal. Please report this on github by running $project please.```')
+threading.Thread(target=web, daemon=True).start()#starts web app
 client.run(CLIENTTOKEN)
