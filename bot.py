@@ -9,12 +9,11 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 import asyncio
 import threading
-from hypercorn.asyncio import serve
 #quart
 app = Quart(__name__)
 @app.route("/", methods = ["get"])
 async def index():
-    return '🔎', 200
+    return '<h3><center>Rezi bot is up! ✔</center></h3>', 200
 def web():
     app.run()
 #env
