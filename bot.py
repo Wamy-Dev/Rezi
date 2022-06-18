@@ -8,14 +8,12 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 import asyncio
-import threading
+from threading import Thread
 #quart
 app = Quart(__name__)
 @app.route("/", methods = ["get"])
 async def index():
     return '<h3><center>Rezi bot is up! ✔</center></h3>', 200
-def web():
-    app.run()
 #env
 SEARCHAPIKEY = config('SEARCHAPIKEY')
 CLIENTTOKEN = config('CLIENTTOKEN')
@@ -236,5 +234,17 @@ async def grab(ctx):
                             await ctx.send(f'```No results found. Thats impossible. Your search was: {beforecontent}. Please make sure this was correct.```')
                     except:
                         await ctx.send('```Search failed. This is not normal. Please report this on github by running $project please.```')
-threading.Thread(target=web, daemon=True).start()#starts web app
-client.run(CLIENTTOKEN)
+class async_discord_thread(Thread):
+    #thanks @FrankWhoee for this code snippet
+    def __init__(self):
+        Thread.__init__(self)
+        self.loop = asyncio.get_event_loop()
+        self.start()
+    async def starter(self):
+        await client.start(CLIENTTOKEN)
+    def run(self):
+        self.name = 'Discord.py'
+        self.loop.create_task(self.starter())
+        self.loop.run_forever()
+discord_thread = async_discord_thread()
+app.run(host="0.0.0.0")
