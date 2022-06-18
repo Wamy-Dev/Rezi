@@ -1,14 +1,13 @@
 import discord
 import meilisearch
 from discord.ext import commands
-import json
+from langdetect import detect
 from decouple import config
 import base64
-from langdetect import detect
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
-from google_trans_new import google_translator  
+import asyncio
 #env
 SEARCHAPIKEY = config('SEARCHAPIKEY')
 CLIENTTOKEN = config('CLIENTTOKEN')
@@ -27,7 +26,7 @@ client = commands.Bot(command_prefix = '$', intents=intents)
 client.remove_command('help')
 @client.event
 async def on_ready():
-    print('Bot is ready.')
+    print(f'Bot is ready. Logged in as {client.user}(ID: {client.user.id}) ')
     await client.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = "$help"))#sets status as "Watching:!help"
 @client.command()
 async def eggotyou(ctx):
@@ -37,7 +36,27 @@ async def project(ctx):
     await ctx.send('```https://github.com/Wamy-Dev/Rezi```')
 @client.command()
 async def convert(ctx):
-    await ctx.send('```https://www.base64decode.org/```')
+    def check(msg):
+        return msg.author == ctx.author and msg.channel == ctx.channel
+    embed = discord.Embed(title = "Please respond with your base64 link.", colour = discord.Colour.from_rgb(251,172,4))
+    embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
+    embed.set_footer(text = "Respond within 15 seconds. Rezi will return your link in your DMs.")
+    await ctx.send(embed = embed)
+    try:  
+        message = await client.wait_for("message", check = check, timeout = 15)
+        beforecontent = message.content
+        try:
+            link = base64.b64decode(beforecontent).decode('utf-8')
+        except:
+            await ctx.send('```❌ Invalid base64 link. Please try again.```')
+
+        embed = discord.Embed(title = "Here is your coverted link!", colour = discord.Colour.from_rgb(4,132,188))
+        embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
+        embed.add_field(name = '🔗', value=f'https://{link}', inline = False)
+        embed.set_footer(text = "If you like this project please donate using $donate in the server.")
+        await ctx.author.send(embed = embed)
+    except asyncio.TimeoutError:
+        await ctx.send('```❌ Timed out.```')
 @client.command()
 async def website(ctx):
     await ctx.send('```https://rezi.one```')
