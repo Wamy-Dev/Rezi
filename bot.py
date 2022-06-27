@@ -46,27 +46,47 @@ async def project(ctx):
     embed.set_footer(text = "If you like this project please donate using $donate.")
     await ctx.send(embed = embed)
 @client.command()
-async def convert(ctx):
+async def convert(ctx, arg=None):
     def check(msg):
         return msg.author == ctx.author and msg.channel == ctx.channel
-    embed = discord.Embed(title = "Please respond with your base64 link.", colour = discord.Colour.from_rgb(251,172,4))
-    embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
-    embed.set_footer(text = "Respond within 15 seconds. Rezi will return your link in your DMs.")
-    await ctx.send(embed = embed)
-    try:  
-        message = await client.wait_for("message", check = check, timeout = 15)
-        beforecontent = message.content
-        try:
+    if (arg):
+        beforecontent = arg
+        try: 
             link = base64.b64decode(beforecontent).decode('utf-8')
         except:
             await ctx.send('```❌ Invalid base64 link. Please try again.```')
-        embed = discord.Embed(title = "Here is your coverted link!", colour = discord.Colour.from_rgb(4,132,188))
+        embed = discord.Embed(title = "Here is your converted link!", colour = discord.Colour.from_rgb(4,132,188))
         embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
         embed.add_field(name = '🔗', value=f'https://{link}', inline = False)
         embed.set_footer(text = "If you like this project please donate using $donate in the server.")
         await ctx.author.send(embed = embed)
-    except asyncio.TimeoutError:
-        await ctx.send('```❌ Timed out.```')
+        sendembed = discord.Embed(title = "Please check your DMs!", colour = discord.Colour.from_rgb(4,132,188))
+        sendembed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
+        sendembed.set_footer(text = "If you like this project please donate using $donate in the server.")
+        await ctx.send(embed = sendembed)
+    else:
+        embed = discord.Embed(title = "Please respond with your base64 link.", colour = discord.Colour.from_rgb(251,172,4))
+        embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
+        embed.set_footer(text = "Respond within 15 seconds. Rezi will return your link in your DMs.")
+        await ctx.send(embed = embed)
+        try:  
+            message = await client.wait_for("message", check = check, timeout = 15)
+            beforecontent = message.content
+            try:
+                link = base64.b64decode(beforecontent).decode('utf-8')
+            except:
+                await ctx.send('```❌ Invalid base64 link. Please try again.```')
+            embed = discord.Embed(title = "Here is your converted link!", colour = discord.Colour.from_rgb(4,132,188))
+            embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
+            embed.add_field(name = '🔗', value=f'https://{link}', inline = False)
+            embed.set_footer(text = "If you like this project please donate using $donate in the server.")
+            await ctx.author.send(embed = embed)
+            sendembed = discord.Embed(title = "Please check your DMs!", colour = discord.Colour.from_rgb(4,132,188))
+            sendembed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
+            sendembed.set_footer(text = "If you like this project please donate using $donate in the server.")
+            await ctx.send(embed = sendembed)
+        except asyncio.TimeoutError:
+            await ctx.send('```❌ Timed out.```')
 @client.command()
 async def website(ctx):
     embed = discord.Embed(title = "Rezi Website", colour = discord.Colour.from_rgb(4,132,188))
