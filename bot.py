@@ -38,16 +38,7 @@ intents.message_content = True
 intents.members = True
 client = commands.Bot(command_prefix = '$', intents=intents)
 client.remove_command('help')
-#Putting all repeated lines in a function
-def convert_command_embeds(link:str,author:discord.User):
-    embed = discord.Embed(title = "Here is your converted link!", colour = discord.Colour.from_rgb(4,132,188))
-    embed.set_author(name = author, icon_url = author.avatar.url)
-    embed.add_field(name = '🔗', value="https://"+link if not link.startswith("https://") else link, inline = False)
-    embed.set_footer(text = "If you like this project please donate using $donate in the server.")
-    sendembed = discord.Embed(title = "Please check your DMs!", colour = discord.Colour.from_rgb(4,132,188))
-    sendembed.set_author(name = author, icon_url = author.avatar.url)
-    sendembed.set_footer(text = "If you like this project please donate using $donate in the server.")
-    return embed,sendembed
+
 @client.event
 async def on_ready():
     print(f'Bot is ready. Logged in as {client.user}(ID: {client.user.id}) ')
@@ -65,6 +56,16 @@ async def project(ctx):
     await ctx.send(embed = embed)
 @client.command(aliases = ['decode', 'converts'])
 async def convert(ctx, arg=None):
+    def convert_command_embeds(link:str,author:discord.User): 
+    #Thanks @ItsZabbs for this code snippet
+        embed = discord.Embed(title = "Here is your converted link!", colour = discord.Colour.from_rgb(4,132,188))
+        embed.set_author(name = author, icon_url = author.avatar.url)
+        embed.add_field(name = '🔗', value="https://"+link if not link.startswith("https://") else link, inline = False)
+        embed.set_footer(text = "If you like this project please donate using $donate in the server.")
+        sendembed = discord.Embed(title = "Please check your DMs!", colour = discord.Colour.from_rgb(4,132,188))
+        sendembed.set_author(name = author, icon_url = author.avatar.url)
+        sendembed.set_footer(text = "If you like this project please donate using $donate in the server.")
+        return embed,sendembed
     def check(msg):
         return msg.author == ctx.author and msg.channel == ctx.channel
     if (arg):
@@ -189,6 +190,5 @@ class async_discord_thread(Thread):
         self.name = 'Discord.py'
         self.loop.create_task(self.starter())
         self.loop.run_forever()
-#discord_thread = async_discord_thread()
-#app.run(host="0.0.0.0")
-client.run(CLIENTTOKEN)
+discord_thread = async_discord_thread()
+app.run(host="0.0.0.0")
