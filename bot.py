@@ -5,7 +5,6 @@
 #/_____/\__, /\__, /  /_/ /_/\__,_/_/ /_/\__/\___/_/  /____(_)  
 #      /____//____/                                             
 # Mato.5201
-
 import discord
 import meilisearch
 from discord.ext import commands
@@ -49,7 +48,6 @@ def convert_command_embeds(link:str,author:discord.User):
     sendembed.set_author(name = author, icon_url = author.avatar.url)
     sendembed.set_footer(text = "If you like this project please donate using $donate in the server.")
     return embed,sendembed
-
 @client.event
 async def on_ready():
     print(f'Bot is ready. Logged in as {client.user}(ID: {client.user.id}) ')
@@ -65,7 +63,7 @@ async def project(ctx):
     embed.add_field(name = '🔗', value='https://github.com/Wamy-Dev/Rezi', inline = False)
     embed.set_footer(text = "If you like this project please donate using $donate.")
     await ctx.send(embed = embed)
-@client.command()
+@client.command(aliases = ['decode', 'converts'])
 async def convert(ctx, arg=None):
     def check(msg):
         return msg.author == ctx.author and msg.channel == ctx.channel
@@ -150,41 +148,25 @@ async def grab(ctx):
             await ctx.send('```❌ Timed out. Please try again.```')
         beforecontent = message.content
         #
-        searchresult = searcher.index('games').search(beforecontent, {
-            'limit': 4,
-            'attributesToRetrieve': ['basename', 'link'],
-            })
-        if 'nbHits' in searchresult:
-            del searchresult['nbHits']
-            del searchresult['exhaustiveNbHits']
-            del searchresult['query']
-            del searchresult['limit']
-            del searchresult['offset']
-            del searchresult['processingTimeMs']
-            result = str(searchresult)
-            for t in (("'", ""), ("{", ""), ("}", ""), ("]", ""), ("[", ""), ("hits: ", ""), ("basename: ", ""), ("link: ", "")):
-                result = result.replace(*t)
-            try:
-                link1title,link1link,link2title,link2link,link3title,link3link,link4title,link4link = result.split(",")
-                link1link = link1link.replace(" ", "")
-                link2link = link2link.replace(" ", "")
-                link3link = link3link.replace(" ", "")
-                link4link = link4link.replace(" ", "")
-                link1b64 = base64.b64encode(link1link.encode("UTF-8"))
-                link1b64 = link1b64.decode("UTF-8")
-                link2b64 = base64.b64encode(link2link.encode("UTF-8"))
-                link2b64 = link2b64.decode("UTF-8")
-                link3b64 = base64.b64encode(link3link.encode("UTF-8"))
-                link3b64 = link3b64.decode("UTF-8")
-                link4b64 = base64.b64encode(link4link.encode("UTF-8"))
-                link4b64 = link4b64.decode("UTF-8")
-                embed = discord.Embed(title = "Here are your top 4 results:", colour = discord.Colour.from_rgb(4,132,188))
+        try:
+            searchresult = searcher.index('games').search(beforecontent, {
+                'limit': 5,
+                'attributesToRetrieve': ['basename', 'link'],
+                })
+            itemnumber = len(searchresult["hits"])
+            if itemnumber == 0:
+                await ctx.send(f"```❌ Could not find {beforecontent}. This is impossible. Please check your search and try again.```")
+            else:
+                i = 0
+                embed = discord.Embed(title = f"Here are your top {itemnumber} results:", colour = discord.Colour.from_rgb(4,132,188))
                 embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
-                embed.add_field(name = link1title, value = link1b64, inline = False)
-                embed.add_field(name = link2title, value = link2b64, inline = False)
-                embed.add_field(name = link3title, value = link3b64, inline = False)
-                embed.add_field(name = link4title, value = link4b64, inline = False)
                 embed.set_footer(text = "To get more results please go to https://rezi.one. To convert do $convert.")
+                while i < itemnumber:
+                    title = searchresult["hits"][i]["basename"]
+                    linkbytes = base64.b64encode(searchresult["hits"][i]["link"].encode("UTF-8"))
+                    link = linkbytes.decode("UTF-8")
+                    embed.add_field(name = title, value = link, inline = False)
+                    i+=1
                 await ctx.send(embed = embed)
                 try:
                     counts = doc.get()
@@ -193,83 +175,8 @@ async def grab(ctx):
                     doc.update({u'counts': newcount})
                 except: 
                     print('Adding count failed')
-            except:
-                try:
-                    if result:
-                        link1title,link1link = result.split(",")
-                        link1link = link1link.replace(" ", "")
-                        link1b64 = base64.b64encode(link1link.encode("UTF-8"))
-                        link1b64 = link1b64.decode("UTF-8")
-                        embed = discord.Embed(title = "Here is your top result:", colour = discord.Colour.from_rgb(4,132,188))
-                        embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
-                        embed.add_field(name = link1title, value = link1b64, inline = False)
-                        embed.set_footer(text = "Only 1 result found. To convert do $convert.")
-                        await ctx.send(embed = embed)
-                        try:
-                            counts = doc.get()
-                            previouscount = counts.to_dict()
-                            newcount = previouscount['counts'] + 1
-                            doc.update({u'counts': newcount})
-                        except:
-                            print('Adding count failed')
-                    else:
-                        await ctx.send(f'```No results found. Thats impossible. Your search was: {beforecontent}. Please make sure this was correct.```')
-                except:
-                    try:
-                        if result:
-                            link1title,link1link,link2title,link2link = result.split(",")
-                            link1link = link1link.replace(" ", "")
-                            link2link = link2link.replace(" ", "")
-                            link1b64 = base64.b64encode(link1link.encode("UTF-8"))
-                            link1b64 = link1b64.decode("UTF-8")
-                            link2b64 = base64.b64encode(link2link.encode("UTF-8"))
-                            link2b64 = link2b64.decode("UTF-8")
-                            embed = discord.Embed(title = "Here are your top results:", colour = discord.Colour.from_rgb(4,132,188))
-                            embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
-                            embed.add_field(name = link1title, value = link1b64, inline = False)
-                            embed.add_field(name = link2title, value = link2b64, inline = False)
-                            embed.set_footer(text = "Only 2 results found. To convert do $convert.")
-                            await ctx.send(embed = embed)
-                            try:
-                                counts = doc.get()
-                                previouscount = counts.to_dict()
-                                newcount = previouscount['counts'] + 1
-                                doc.update({u'counts': newcount})
-                            except:
-                                print('Adding count failed')
-                        else:
-                            await ctx.send(f'```No results found. Thats impossible. Your search was: {beforecontent}. Please make sure this was correct.```')
-                    except:
-                        try:
-                            if result:
-                                link1title,link1link,link2title,link2link,link3title,link3link = result.split(",")
-                                link1link = link1link.replace(" ", "")
-                                link2link = link2link.replace(" ", "")
-                                link3link = link3link.replace(" ", "")
-                                link1b64 = base64.b64encode(link1link.encode("UTF-8"))
-                                link1b64 = link1b64.decode("UTF-8")
-                                link2b64 = base64.b64encode(link2link.encode("UTF-8"))
-                                link2b64 = link2b64.decode("UTF-8")
-                                link3b64 = base64.b64encode(link3link.encode("UTF-8"))
-                                link3b64 = link3b64.decode("UTF-8")
-                                embed = discord.Embed(title = "Here are your top results:", colour = discord.Colour.from_rgb(4,132,188))
-                                embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
-                                embed.add_field(name = link1title, value = link1b64, inline = False)
-                                embed.add_field(name = link2title, value = link2b64, inline = False)
-                                embed.add_field(name = link3title, value = link3b64, inline = False)
-                                embed.set_footer(text = "Only 3 results found. To convert do $convert.")
-                                await ctx.send(embed = embed)
-                                try:
-                                    counts = doc.get()
-                                    previouscount = counts.to_dict()
-                                    newcount = previouscount['counts'] + 1
-                                    doc.update({u'counts': newcount})
-                                except:
-                                    print('Adding count failed')
-                            else:
-                                await ctx.send(f'```No results found. Thats impossible. Your search was: {beforecontent}. Please make sure this was correct.```')
-                        except:
-                            await ctx.send('```Search failed. This is not normal. Please report this on github by running $project please.```')
+        except:
+            await ctx.send('```❌ Something went wrong. Please try again or report this on the Github using $project.```')
 class async_discord_thread(Thread):
     #thanks @FrankWhoee for this code snippet
     def __init__(self):
@@ -282,5 +189,6 @@ class async_discord_thread(Thread):
         self.name = 'Discord.py'
         self.loop.create_task(self.starter())
         self.loop.run_forever()
-discord_thread = async_discord_thread()
-app.run(host="0.0.0.0")
+#discord_thread = async_discord_thread()
+#app.run(host="0.0.0.0")
+client.run(CLIENTTOKEN)
