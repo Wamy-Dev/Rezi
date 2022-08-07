@@ -39,6 +39,17 @@ intents.message_content = True
 intents.members = True
 client = commands.Bot(command_prefix = '$', intents=intents)
 client.remove_command('help')
+#Putting all repeated lines in a function
+def convert_command_embeds(link:str,author:discord.User):
+    embed = discord.Embed(title = "Here is your converted link!", colour = discord.Colour.from_rgb(4,132,188))
+    embed.set_author(name = author, icon_url = author.avatar.url)
+    embed.add_field(name = '🔗', value="https://"+link if not link.startswith("https://") else link, inline = False)
+    embed.set_footer(text = "If you like this project please donate using $donate in the server.")
+    sendembed = discord.Embed(title = "Please check your DMs!", colour = discord.Colour.from_rgb(4,132,188))
+    sendembed.set_author(name = author, icon_url = author.avatar.url)
+    sendembed.set_footer(text = "If you like this project please donate using $donate in the server.")
+    return embed,sendembed
+
 @client.event
 async def on_ready():
     print(f'Bot is ready. Logged in as {client.user}(ID: {client.user.id}) ')
@@ -64,14 +75,8 @@ async def convert(ctx, arg=None):
             link = base64.b64decode(beforecontent).decode('utf-8')
         except:
             await ctx.send('```❌ Invalid base64 link. Please try again.```')
-        embed = discord.Embed(title = "Here is your converted link!", colour = discord.Colour.from_rgb(4,132,188))
-        embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
-        embed.add_field(name = '🔗', value=f'https://{link}', inline = False)
-        embed.set_footer(text = "If you like this project please donate using $donate in the server.")
-        await ctx.author.send(embed = embed)
-        sendembed = discord.Embed(title = "Please check your DMs!", colour = discord.Colour.from_rgb(4,132,188))
-        sendembed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
-        sendembed.set_footer(text = "If you like this project please donate using $donate in the server.")
+        embed,sendembed = convert_command_embeds(link,ctx.message.author)
+        await ctx.author.send(embed = embed) 
         await ctx.send(embed = sendembed)
     else:
         embed = discord.Embed(title = "Please respond with your base64 link.", colour = discord.Colour.from_rgb(251,172,4))
@@ -85,14 +90,8 @@ async def convert(ctx, arg=None):
                 link = base64.b64decode(beforecontent).decode('utf-8')
             except:
                 await ctx.send('```❌ Invalid base64 link. Please try again.```')
-            embed = discord.Embed(title = "Here is your converted link!", colour = discord.Colour.from_rgb(4,132,188))
-            embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
-            embed.add_field(name = '🔗', value=f'https://{link}', inline = False)
-            embed.set_footer(text = "If you like this project please donate using $donate in the server.")
+            embed,sendembed = convert_command_embeds(link,ctx.message.author)
             await ctx.author.send(embed = embed)
-            sendembed = discord.Embed(title = "Please check your DMs!", colour = discord.Colour.from_rgb(4,132,188))
-            sendembed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
-            sendembed.set_footer(text = "If you like this project please donate using $donate in the server.")
             await ctx.send(embed = sendembed)
         except asyncio.TimeoutError:
             await ctx.send('```❌ Timed out.```')
