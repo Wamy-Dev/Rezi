@@ -3,5 +3,8 @@
         {
             "path": "."
         }
-    ]
+    ],
+    "settings": {
+        "dotenv.enableAutocloaking": false
+    }
 }

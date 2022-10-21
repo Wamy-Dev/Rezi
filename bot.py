@@ -150,9 +150,9 @@ async def grab(ctx):
         beforecontent = message.content
         #
         try:
-            searchresult = searcher.index('games').search(beforecontent, {
+            searchresult = searcher.index('rezi').search(beforecontent, {
                 'limit': 5,
-                'attributesToRetrieve': ['basename', 'link'],
+                'attributesToRetrieve': ['title', 'link'],
                 })
             itemnumber = len(searchresult["hits"])
             if itemnumber == 0:
@@ -163,7 +163,7 @@ async def grab(ctx):
                 embed.set_author(name = ctx.message.author, icon_url = ctx.author.avatar.url)
                 embed.set_footer(text = "To get more results please go to https://rezi.one. To convert do $convert.")
                 while i < itemnumber:
-                    title = searchresult["hits"][i]["basename"]
+                    title = searchresult["hits"][i]["title"]
                     linkbytes = base64.b64encode(searchresult["hits"][i]["link"].encode("UTF-8"))
                     link = linkbytes.decode("UTF-8")
                     embed.add_field(name = title, value = link, inline = False)
